@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysPecNSDesk", "SysPecNSDesk\SysPecNSDesk.csproj", "{90D87BD8-671E-4CFA-83F2-77719701902A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysPecNSLib", "SysPecNSLib\SysPecNSLib.csproj", "{4E1C9953-F1B3-496F-9E84-3E2B89B6CA05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90D87BD8-671E-4CFA-83F2-77719701902A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D87BD8-671E-4CFA-83F2-77719701902A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D87BD8-671E-4CFA-83F2-77719701902A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D87BD8-671E-4CFA-83F2-77719701902A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E1C9953-F1B3-496F-9E84-3E2B89B6CA05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E1C9953-F1B3-496F-9E84-3E2B89B6CA05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E1C9953-F1B3-496F-9E84-3E2B89B6CA05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E1C9953-F1B3-496F-9E84-3E2B89B6CA05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE544AA7-77B0-4AAB-8EBD-550C70F2F07C}
+	EndGlobalSection
+EndGlobal
