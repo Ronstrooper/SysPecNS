@@ -1,3 +1,5 @@
+using SysPecNSLib;
+
 namespace SysPecNSDesk
 {
     public partial class Form1 : Form
@@ -90,10 +92,23 @@ namespace SysPecNSDesk
             textBox1.Clear(); //limpar caixa
             txtNumero2.Clear();
             textBox1.Focus();// barra piscando
-            txtNumero2.Enabled= true;
+            txtNumero2.Enabled = true;
         }
 
         private void txtNumero2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Nivel nivel = new Nivel(textBox2.Text, textBox3.Text);
+            nivel.Inserir();
+            MessageBox.Show("Nível gravado com sucesso");
+            button2.Enabled = false;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
