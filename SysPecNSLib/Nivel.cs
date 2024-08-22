@@ -104,8 +104,13 @@ namespace SysPecNSLib
             //    return false; 
         }
         public void ExcluirNivel(int id)
-        { 
-            
+        {
+            // em geral, nada se exclui de uma tabela 
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"delete from niveis where id = {Id}";
+            cmd.ExecuteNonQuery();
+
         }
     }
 }
