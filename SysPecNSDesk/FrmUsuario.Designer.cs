@@ -34,6 +34,20 @@
             clnEmail = new DataGridViewTextBoxColumn();
             clnNivel = new DataGridViewTextBoxColumn();
             clnAtivo = new DataGridViewCheckBoxColumn();
+            btnInserir = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            txtId = new TextBox();
+            txtNome = new TextBox();
+            txtEmail = new TextBox();
+            cmbNivel = new ComboBox();
+            txtSenha = new TextBox();
+            label6 = new Label();
+            txtConfSenha = new TextBox();
+            chkAtivo = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
@@ -89,17 +103,153 @@
             clnAtivo.ReadOnly = true;
             clnAtivo.Width = 50;
             // 
+            // btnInserir
+            // 
+            btnInserir.Location = new Point(155, 195);
+            btnInserir.Name = "btnInserir";
+            btnInserir.Size = new Size(75, 23);
+            btnInserir.TabIndex = 1;
+            btnInserir.Text = "&Inserir";
+            btnInserir.UseVisualStyleBackColor = true;
+            btnInserir.Click += btnInserir_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(155, 34);
+            label1.Name = "label1";
+            label1.Size = new Size(18, 15);
+            label1.TabIndex = 2;
+            label1.Text = "ID";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(242, 34);
+            label2.Name = "label2";
+            label2.Size = new Size(40, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Nome";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(155, 87);
+            label3.Name = "label3";
+            label3.Size = new Size(36, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Email";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(349, 87);
+            label4.Name = "label4";
+            label4.Size = new Size(34, 15);
+            label4.TabIndex = 5;
+            label4.Text = "Nivel";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(155, 136);
+            label5.Name = "label5";
+            label5.Size = new Size(39, 15);
+            label5.TabIndex = 6;
+            label5.Text = "Senha";
+            // 
+            // txtId
+            // 
+            txtId.Location = new Point(152, 52);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(53, 23);
+            txtId.TabIndex = 7;
+            // 
+            // txtNome
+            // 
+            txtNome.Location = new Point(242, 52);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(161, 23);
+            txtNome.TabIndex = 8;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(152, 105);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(161, 23);
+            txtEmail.TabIndex = 9;
+            // 
+            // cmbNivel
+            // 
+            cmbNivel.FormattingEnabled = true;
+            cmbNivel.Location = new Point(349, 105);
+            cmbNivel.Name = "cmbNivel";
+            cmbNivel.Size = new Size(121, 23);
+            cmbNivel.TabIndex = 10;
+            // 
+            // txtSenha
+            // 
+            txtSenha.Location = new Point(155, 154);
+            txtSenha.Name = "txtSenha";
+            txtSenha.Size = new Size(75, 23);
+            txtSenha.TabIndex = 11;
+            txtSenha.UseSystemPasswordChar = true;
+            txtSenha.TextChanged += this.textBox4_TextChanged;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(242, 136);
+            label6.Name = "label6";
+            label6.Size = new Size(92, 15);
+            label6.TabIndex = 12;
+            label6.Text = "Confirma Senha";
+            // 
+            // txtConfSenha
+            // 
+            txtConfSenha.Location = new Point(242, 154);
+            txtConfSenha.Name = "txtConfSenha";
+            txtConfSenha.Size = new Size(92, 23);
+            txtConfSenha.TabIndex = 13;
+            txtConfSenha.UseSystemPasswordChar = true;
+            txtConfSenha.TextChanged += textBox5_TextChanged;
+            // 
+            // chkAtivo
+            // 
+            chkAtivo.AutoSize = true;
+            chkAtivo.Location = new Point(349, 158);
+            chkAtivo.Name = "chkAtivo";
+            chkAtivo.Size = new Size(54, 19);
+            chkAtivo.TabIndex = 14;
+            chkAtivo.Text = "Ativo";
+            chkAtivo.UseVisualStyleBackColor = true;
+            // 
             // FrmUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(chkAtivo);
+            Controls.Add(txtConfSenha);
+            Controls.Add(label6);
+            Controls.Add(txtSenha);
+            Controls.Add(cmbNivel);
+            Controls.Add(txtEmail);
+            Controls.Add(txtNome);
+            Controls.Add(txtId);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(btnInserir);
             Controls.Add(dgvUsuarios);
             Name = "FrmUsuario";
             Text = "FrmUsuario";
             Load += FrmUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -110,5 +260,19 @@
         private DataGridViewTextBoxColumn clnEmail;
         private DataGridViewTextBoxColumn clnNivel;
         private DataGridViewCheckBoxColumn clnAtivo;
+        private Button btnInserir;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private TextBox txtId;
+        private TextBox txtNome;
+        private TextBox txtEmail;
+        private ComboBox cmbNivel;
+        private TextBox txtSenha;
+        private Label label6;
+        private TextBox txtConfSenha;
+        private CheckBox chkAtivo;
     }
 }

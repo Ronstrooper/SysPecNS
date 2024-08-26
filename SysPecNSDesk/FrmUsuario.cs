@@ -20,6 +20,13 @@ namespace SysPecNSDesk
 
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
+            // carregando o combobox de niveis
+            var niveis = Nivel.ObterLista(); // busca a classe nivel e armazena os dados da tabela nivel no db
+            cmbNivel.DataSource = niveis;
+            cmbNivel.DisplayMember = "Nome"; // nome vindo da tabela niveis
+            cmbNivel.ValueMember = "Id";
+
+            // preenchendo o datagrid com os usuários
             var Lista = Usuario.ObterLista();
             dgvUsuarios.Rows.Clear();
             int cont = 0;
@@ -33,6 +40,18 @@ namespace SysPecNSDesk
                 dgvUsuarios.Rows[cont].Cells[4].Value = usuario.Ativo;
                 cont++;
             }
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(cmbNivel.SelectedValue.ToString);
+            Usuario usuario = new();
+
         }
     }
 }
