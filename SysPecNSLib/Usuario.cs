@@ -97,7 +97,7 @@ namespace SysPecNSLib
             }
             else
             {
-                comandosSQL.CommandText = $"select * from usuarios where nome like '%{nome}%' order by nome";
+                comandosSQL.CommandText = $"select * from usuarios where nome like '%{nome}%' order by nome"; // opção para puxar dados do db, pode ser usado para puxar nomes, produtos, etc.
             }
             comandosSQL.CommandText = "select * from usuarios order by nome";
             var dr = comandosSQL.ExecuteReader();

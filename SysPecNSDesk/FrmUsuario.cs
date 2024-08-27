@@ -25,21 +25,8 @@ namespace SysPecNSDesk
             cmbNivel.DataSource = niveis;
             cmbNivel.DisplayMember = "Nome"; // nome vindo da tabela niveis
             cmbNivel.ValueMember = "Id";
-
-            // preenchendo o datagrid com os usuários
-            var Lista = Usuario.ObterLista();
-            dgvUsuarios.Rows.Clear();
-            int cont = 0;
-            foreach (var usuario in Lista) // para cada usuário na lista
-            {
-                dgvUsuarios.Rows.Add();
-                dgvUsuarios.Rows[cont].Cells[0].Value = usuario.Id;
-                dgvUsuarios.Rows[cont].Cells[1].Value = usuario.Nome;
-                dgvUsuarios.Rows[cont].Cells[2].Value = usuario.Email;
-                dgvUsuarios.Rows[cont].Cells[3].Value = usuario.Nivel.Nome;
-                dgvUsuarios.Rows[cont].Cells[4].Value = usuario.Ativo;
-                cont++;
-            }
+            CarregaGrid();
+           
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -54,10 +41,10 @@ namespace SysPecNSDesk
                 txtNome.Text,
                 txtEmail.Text,
                 txtSenha.Text,
-                Nivel.ObterPorId(Convert.ToInt32(cmbNivel.SelectedValue))             
+                Nivel.ObterPorId(Convert.ToInt32(cmbNivel.SelectedValue))
                 );
             usuario.Inserir();
-            if (usuario.Id>0)
+            if (usuario.Id > 0)
             {
                 txtId.Text = usuario.Id.ToString();
                 MessageBox.Show($"O usuário {usuario.Nome}, foi inserido com sucesso, com o Id {usuario.Id}");
@@ -72,6 +59,35 @@ namespace SysPecNSDesk
             else
             {
                 MessageBox.Show("Falha ao gravar");
+            }
+        }
+
+        private void txtBusca_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBusca.Text.Length > 0) // se usuário digitar ao menos um caractere
+            {
+                CarregaGrid(txtBusca.Text); // mostra apenas o que for buscado através do like db
+            }
+            else
+            {
+                CarregaGrid(); // mostra todos os registros
+            }
+        }
+        private void CarregaGrid(string nome = "")
+        {
+            // preenchendo o datagrid com os usuários
+            var Lista = Usuario.ObterLista(nome);
+            dgvUsuarios.Rows.Clear();
+            int cont = 0;
+            foreach (var usuario in Lista) // para cada usuário na lista
+            {
+                dgvUsuarios.Rows.Add();
+                dgvUsuarios.Rows[cont].Cells[0].Value = usuario.Id;
+                dgvUsuarios.Rows[cont].Cells[1].Value = usuario.Nome;
+                dgvUsuarios.Rows[cont].Cells[2].Value = usuario.Email;
+                dgvUsuarios.Rows[cont].Cells[3].Value = usuario.Nivel.Nome;
+                dgvUsuarios.Rows[cont].Cells[4].Value = usuario.Ativo;
+                cont++;
             }
         }
     }

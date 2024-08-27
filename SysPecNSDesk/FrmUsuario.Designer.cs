@@ -57,13 +57,13 @@
             // dgvUsuarios
             // 
             dgvUsuarios.AllowUserToAddRows = false;
-            dgvUsuarios.AllowUserToDeleteRows = false;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnEmail, clnNivel, clnAtivo });
             dgvUsuarios.Location = new Point(152, 267);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.ReadOnly = true;
             dgvUsuarios.RowHeadersVisible = false;
+            dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsuarios.Size = new Size(500, 150);
             dgvUsuarios.TabIndex = 0;
             // 
@@ -251,6 +251,7 @@
             txtBusca.Name = "txtBusca";
             txtBusca.Size = new Size(500, 23);
             txtBusca.TabIndex = 17;
+            txtBusca.TextChanged += txtBusca_TextChanged;
             // 
             // FrmUsuario
             // 
