@@ -30,7 +30,7 @@ namespace SysPecNSDesk
             var Lista = Usuario.ObterLista();
             dgvUsuarios.Rows.Clear();
             int cont = 0;
-            foreach (var usuario in Lista)
+            foreach (var usuario in Lista) // para cada usuário na lista
             {
                 dgvUsuarios.Rows.Add();
                 dgvUsuarios.Rows[cont].Cells[0].Value = usuario.Id;
@@ -49,9 +49,30 @@ namespace SysPecNSDesk
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(cmbNivel.SelectedValue.ToString);
-            Usuario usuario = new();
-
+            //MessageBox.Show(cmbNivel.SelectedValue.ToString());
+            Usuario usuario = new(
+                txtNome.Text,
+                txtEmail.Text,
+                txtSenha.Text,
+                Nivel.ObterPorId(Convert.ToInt32(cmbNivel.SelectedValue))             
+                );
+            usuario.Inserir();
+            if (usuario.Id>0)
+            {
+                txtId.Text = usuario.Id.ToString();
+                MessageBox.Show($"O usuário {usuario.Nome}, foi inserido com sucesso, com o Id {usuario.Id}");
+                txtId.Clear();
+                txtNome.Clear();
+                txtEmail.Clear();
+                txtConfSenha.Clear();
+                txtSenha.Clear();
+                txtNome.Focus();
+                FrmUsuario_Load(sender, e); // recarrega a página do formulário após inserção de cliente
+            }
+            else
+            {
+                MessageBox.Show("Falha ao gravar");
+            }
         }
     }
 }

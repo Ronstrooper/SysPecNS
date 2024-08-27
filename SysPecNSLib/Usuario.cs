@@ -86,11 +86,19 @@ namespace SysPecNSLib
             }
             return usuario;
         }
-        public static List<Usuario> ObterLista()
+        public static List<Usuario> ObterLista(string? nome="") 
         {
             List<Usuario> Lista = new();
             var comandosSQL = Banco.Abrir();
             comandosSQL.CommandType = CommandType.Text;
+            if (nome == "")
+            {
+                comandosSQL.CommandText = "select * from usuarios order by nome";
+            }
+            else
+            {
+                comandosSQL.CommandText = $"select * from usuarios where nome like '%{nome}%' order by nome";
+            }
             comandosSQL.CommandText = "select * from usuarios order by nome";
             var dr = comandosSQL.ExecuteReader();
             while (dr.Read())
