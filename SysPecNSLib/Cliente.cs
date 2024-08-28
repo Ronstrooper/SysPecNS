@@ -19,7 +19,10 @@ namespace SysPecNSLib
     public DateTime DataNascimento { get; set; } // de acordo com data_nasc no banco de dados
     public DateTime DataCadastro { get; set; } // de acordo com data_cad no banco de dados
     public bool Ativo { get; set; }
-        public Cliente() { } // 4 métodos construtores
+        public Cliente() 
+        {
+            Id = 0;
+        } // 4 métodos construtores
         public Cliente(int id, string? nome, string? cpf, string? telefone, string? email, DateTime dataNascimento, DateTime dataCadastro, bool ativo) 
         {
             Id = id;
