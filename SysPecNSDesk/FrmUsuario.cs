@@ -99,7 +99,7 @@ namespace SysPecNSDesk
 
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
-            if (VerificaControles()) 
+            if (VerificaControles())
             {
                 var msg = MessageBox.Show("Deseja continuar o cadastro ?", "Confirmação de saída", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2); // pergunta ao usuário se ele deseja mesmo sair ou fechar a janela
                 if (msg == DialogResult.No) this.Close();
@@ -123,6 +123,14 @@ namespace SysPecNSDesk
             {
                 return false;
             }
+        }
+
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = 0;
+            int posicaoLinha = dgvUsuarios.CurrentRow.Index;
+            id = Convert.ToInt32(dgvUsuarios.Rows[posicaoLinha].Cells[0].Value); //pega o conteúdo que vem como objeto, converte para Int32 
+            MessageBox.Show(id.ToString());
         }
     }
 }

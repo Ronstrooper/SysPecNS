@@ -63,19 +63,28 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spcidade", Cidade);
             cmd.Parameters.AddWithValue("spuf", Uf);
             cmd.Parameters.AddWithValue("sptipo_endereco", Tipo_endereco);
-            var dr = cmd.ExecuteNonQuery();
-
+            
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                Id = dr.GetInt32(0);
+            }
+            {
+                cmd.Connection.Close();
+            }
         }
         public static Endereco ObterPorId(int id)
         {
             Endereco endereco = new();
             var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandType = $"select * from enderecos where id = {id}";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_endereco_select";
+            cmd.Parameters.AddWithValue("spid", id);
+            ;
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                endereco = new(
+                endereco = new Endereco(
                     dr.GetInt32(0),
                     dr.GetInt32(1),
                     dr.GetString(2),
@@ -86,8 +95,17 @@ namespace SysPecNSLib
                     dr.GetString(7),
                     dr.GetString(8),
                     dr.GetString(9)
-                
+               );
             }
+            cmd.Connection.Close();
+            return endereco;
+            }
+        public static List<Endereco>ObterListaPorCliente(int clienteid)
+        {
+            List<Endereco> lista = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_"
         }
     }
 }
