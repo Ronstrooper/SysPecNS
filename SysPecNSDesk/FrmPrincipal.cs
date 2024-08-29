@@ -25,5 +25,11 @@ namespace SysPecNSDesk
             //frmUsuario.ShowDialog(); // Mostra o diálogo mas impede que qualquer outra janela seja exibida, usada apenas para obrigar a janela a ser executada em primeiro plano
 
         }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var msg = MessageBox.Show("Deseja Sair ?","Confirmação de saída", MessageBoxButtons.YesNo,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2); // pergunta ao usuário se ele deseja mesmo sair ou fechar a janela
+            if (msg == DialogResult.Yes) Application.Exit(); // fecha o programa ou sai da sesssão 
+        }
     }
 }

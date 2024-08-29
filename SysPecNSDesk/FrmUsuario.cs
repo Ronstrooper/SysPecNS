@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace SysPecNSDesk
             cmbNivel.DisplayMember = "Nome"; // nome vindo da tabela niveis
             cmbNivel.ValueMember = "Id";
             CarregaGrid();
-           
+
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -88,6 +89,39 @@ namespace SysPecNSDesk
                 dgvUsuarios.Rows[cont].Cells[3].Value = usuario.Nivel.Nome;
                 dgvUsuarios.Rows[cont].Cells[4].Value = usuario.Ativo;
                 cont++;
+            }
+        }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            if (VerificaControles()) 
+            {
+                var msg = MessageBox.Show("Deseja continuar o cadastro ?", "Confirmação de saída", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2); // pergunta ao usuário se ele deseja mesmo sair ou fechar a janela
+                if (msg == DialogResult.No) this.Close();
+            }
+            else
+            {
+                Close();
+            }
+
+        }
+        private bool VerificaControles()
+        {
+            if (txtNome.Text != String.Empty
+                || txtNome.Text != String.Empty
+                || txtEmail.Text != String.Empty
+                || txtConfSenha.Text != String.Empty)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

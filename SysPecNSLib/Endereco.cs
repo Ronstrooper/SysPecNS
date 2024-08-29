@@ -86,6 +86,7 @@ namespace SysPecNSLib
                     dr.GetString(7),
                     dr.GetString(8),
                     dr.GetString(9)
+                
             }
         }
     }
