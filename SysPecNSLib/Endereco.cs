@@ -147,5 +147,16 @@ namespace SysPecNSLib
             cmd.Connection.Close();
         }
 
+        public static void Deletar(int id)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_endereco_delete";
+            cmd.Parameters.AddWithValue("spid", id);
+
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+        
     }
 }
