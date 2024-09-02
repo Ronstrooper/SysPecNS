@@ -11,7 +11,7 @@ namespace SysPecNSLib
         public int Id { get; set; } // métodos construtores
         public string? Nome { get; set; }
         public string? Sigla { get; set; }
-
+        public Categoria() { } // método vazio que retonar new new();
         public Categoria(int id, string? nome, string? sigla) // 
 
         {
@@ -30,7 +30,7 @@ namespace SysPecNSLib
         {
             var cmd = Banco.Abrir(); //quando inserir categoria é importante verificar se há alguma procedure
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandText = "sp_categoria_insert";
+            cmd.CommandText = "sp_categoria_insert"; //procedure insert
             cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             Id = Convert.ToInt32(cmd.ExecuteScalar());  //data reader //Scalar, retorna um núnico valor,
