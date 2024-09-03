@@ -132,5 +132,10 @@ namespace SysPecNSDesk
             id = Convert.ToInt32(dgvUsuarios.Rows[posicaoLinha].Cells[0].Value); //pega o conteúdo que vem como objeto, converte para Int32 
             MessageBox.Show(id.ToString());
         }
+
+        private void cmbNivel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

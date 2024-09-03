@@ -19,13 +19,6 @@ namespace SysPecNSLib
             Nome = nome;
             Sigla = sigla;
         }
-
-        public Categoria(string? nome, string? sigla)
-
-        {
-            Nome = nome;
-            Sigla = sigla;
-        }
         public void Inserir() // métodos das classe
         {
             var cmd = Banco.Abrir(); //quando inserir categoria é importante verificar se há alguma procedure
@@ -56,7 +49,7 @@ namespace SysPecNSLib
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                categorias.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2)));
+                categorias.Add(new(dr.GetInt32(0), dr.GetString(1),null));
 
             }
             return categorias;
