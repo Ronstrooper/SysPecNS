@@ -12,6 +12,11 @@ namespace SysPecNSLib
         public string? Nome { get; set; }
         public string? Sigla { get; set; }
         public Categoria() { } // método vazio que retonar new new();
+        public Categoria(string? nome, string? sigla)
+        {
+            Nome = nome;
+            Sigla = sigla;
+        }
         public Categoria(int id, string? nome, string? sigla) // 
 
         {
