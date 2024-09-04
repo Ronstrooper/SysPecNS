@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            textBox1 = new TextBox();
+            txtId = new TextBox();
             label1 = new Label();
             Produtos = new GroupBox();
             btnConsultar = new Button();
@@ -67,12 +67,13 @@
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // txtId
             // 
-            textBox1.Location = new Point(24, 47);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(76, 23);
-            textBox1.TabIndex = 0;
+            txtId.Location = new Point(24, 47);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(76, 23);
+            txtId.TabIndex = 10;
             // 
             // label1
             // 
@@ -103,7 +104,7 @@
             Produtos.Controls.Add(txtUnidadeVenda);
             Produtos.Controls.Add(txtValorUnit);
             Produtos.Controls.Add(txtCodBar);
-            Produtos.Controls.Add(textBox1);
+            Produtos.Controls.Add(txtId);
             Produtos.Controls.Add(label1);
             Produtos.Location = new Point(65, 69);
             Produtos.Name = "Produtos";
@@ -117,16 +118,17 @@
             btnConsultar.Location = new Point(348, 217);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(75, 23);
-            btnConsultar.TabIndex = 18;
+            btnConsultar.TabIndex = 9;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // btnEditar
             // 
             btnEditar.Location = new Point(249, 217);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(75, 23);
-            btnEditar.TabIndex = 17;
+            btnEditar.TabIndex = 8;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
             // 
@@ -135,7 +137,7 @@
             btnAdicionar.Location = new Point(150, 217);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(75, 23);
-            btnAdicionar.TabIndex = 16;
+            btnAdicionar.TabIndex = 7;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
             btnAdicionar.Click += btnAdicionar_Click;
@@ -154,12 +156,12 @@
             txtDesconto.Location = new Point(24, 218);
             txtDesconto.Name = "txtDesconto";
             txtDesconto.Size = new Size(100, 23);
-            txtDesconto.TabIndex = 14;
+            txtDesconto.TabIndex = 6;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(276, 145);
+            label7.Location = new Point(25, 140);
             label7.Name = "label7";
             label7.Size = new Size(58, 15);
             label7.TabIndex = 13;
@@ -168,7 +170,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(24, 145);
+            label6.Location = new Point(302, 26);
             label6.Name = "label6";
             label6.Size = new Size(58, 15);
             label6.TabIndex = 12;
@@ -177,23 +179,23 @@
             // cmbCategoria
             // 
             cmbCategoria.FormattingEnabled = true;
-            cmbCategoria.Location = new Point(276, 166);
+            cmbCategoria.Location = new Point(25, 161);
             cmbCategoria.Name = "cmbCategoria";
             cmbCategoria.Size = new Size(342, 23);
-            cmbCategoria.TabIndex = 11;
+            cmbCategoria.TabIndex = 5;
             cmbCategoria.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // txtDescricao
             // 
-            txtDescricao.Location = new Point(24, 166);
+            txtDescricao.Location = new Point(302, 47);
             txtDescricao.Name = "txtDescricao";
             txtDescricao.Size = new Size(234, 23);
-            txtDescricao.TabIndex = 10;
+            txtDescricao.TabIndex = 1;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(485, 86);
+            label5.Location = new Point(347, 85);
             label5.Name = "label5";
             label5.Size = new Size(94, 15);
             label5.TabIndex = 9;
@@ -201,15 +203,15 @@
             // 
             // npEstoqueMinimo
             // 
-            npEstoqueMinimo.Location = new Point(486, 107);
+            npEstoqueMinimo.Location = new Point(348, 106);
             npEstoqueMinimo.Name = "npEstoqueMinimo";
             npEstoqueMinimo.Size = new Size(50, 23);
-            npEstoqueMinimo.TabIndex = 8;
+            npEstoqueMinimo.TabIndex = 4;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(332, 85);
+            label4.Location = new Point(188, 84);
             label4.Name = "label4";
             label4.Size = new Size(102, 15);
             label4.TabIndex = 7;
@@ -218,7 +220,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(181, 87);
+            label3.Location = new Point(25, 86);
             label3.Name = "label3";
             label3.Size = new Size(77, 15);
             label3.TabIndex = 6;
@@ -227,7 +229,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(24, 89);
+            label2.Location = new Point(134, 29);
             label2.Name = "label2";
             label2.Size = new Size(97, 15);
             label2.TabIndex = 5;
@@ -235,25 +237,25 @@
             // 
             // txtUnidadeVenda
             // 
-            txtUnidadeVenda.Location = new Point(330, 107);
+            txtUnidadeVenda.Location = new Point(186, 106);
             txtUnidadeVenda.Name = "txtUnidadeVenda";
             txtUnidadeVenda.Size = new Size(125, 23);
-            txtUnidadeVenda.TabIndex = 4;
+            txtUnidadeVenda.TabIndex = 3;
             txtUnidadeVenda.Text = "Ex. Caixa";
             // 
             // txtValorUnit
             // 
-            txtValorUnit.Location = new Point(180, 107);
+            txtValorUnit.Location = new Point(24, 106);
             txtValorUnit.Name = "txtValorUnit";
             txtValorUnit.Size = new Size(130, 23);
-            txtValorUnit.TabIndex = 3;
+            txtValorUnit.TabIndex = 2;
             // 
             // txtCodBar
             // 
-            txtCodBar.Location = new Point(24, 107);
+            txtCodBar.Location = new Point(134, 47);
             txtCodBar.Name = "txtCodBar";
             txtCodBar.Size = new Size(124, 23);
-            txtCodBar.TabIndex = 2;
+            txtCodBar.TabIndex = 0;
             // 
             // dgvProdutos
             // 
@@ -368,7 +370,7 @@
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox txtId;
         private Label label1;
         private GroupBox Produtos;
         private Label label4;

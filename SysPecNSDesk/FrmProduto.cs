@@ -73,5 +73,22 @@ namespace SysPecNSDesk
                 FrmProduto_Load(sender, e);
             }
         }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            if (btnConsultar.Text == "&Consultar")
+            {
+                txtCodBar.Clear();
+                txtValorUnit.Clear();
+                txtUnidadeVenda.Clear();
+                txtDescricao.Clear();
+                txtDesconto.Clear();
+                txtUnidadeVenda.Clear();
+                npEstoqueMinimo.Value = 0;
+                btnConsultar.Text = "&Obter por ID";
+                txtId.Focus();
+                txtId.ReadOnly = false;
+            }
+        }
     }
 }
