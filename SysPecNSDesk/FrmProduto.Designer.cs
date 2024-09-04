@@ -36,19 +36,19 @@
             btnEditar = new Button();
             btnAdicionar = new Button();
             label8 = new Label();
-            textBox6 = new TextBox();
+            txtDesconto = new TextBox();
             label7 = new Label();
             label6 = new Label();
             cmbCategoria = new ComboBox();
-            textBox5 = new TextBox();
+            txtDescricao = new TextBox();
             label5 = new Label();
-            numericUpDown1 = new NumericUpDown();
+            npEstoqueMinimo = new NumericUpDown();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
+            txtUnidadeVenda = new TextBox();
+            txtValorUnit = new TextBox();
+            txtCodBar = new TextBox();
             timer1 = new System.Windows.Forms.Timer(components);
             dgvProdutos = new DataGridView();
             clnId = new DataGridViewTextBoxColumn();
@@ -63,7 +63,7 @@
             clnDataCad = new DataGridViewTextBoxColumn();
             label9 = new Label();
             Produtos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)npEstoqueMinimo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
@@ -90,19 +90,19 @@
             Produtos.Controls.Add(btnEditar);
             Produtos.Controls.Add(btnAdicionar);
             Produtos.Controls.Add(label8);
-            Produtos.Controls.Add(textBox6);
+            Produtos.Controls.Add(txtDesconto);
             Produtos.Controls.Add(label7);
             Produtos.Controls.Add(label6);
             Produtos.Controls.Add(cmbCategoria);
-            Produtos.Controls.Add(textBox5);
+            Produtos.Controls.Add(txtDescricao);
             Produtos.Controls.Add(label5);
-            Produtos.Controls.Add(numericUpDown1);
+            Produtos.Controls.Add(npEstoqueMinimo);
             Produtos.Controls.Add(label4);
             Produtos.Controls.Add(label3);
             Produtos.Controls.Add(label2);
-            Produtos.Controls.Add(textBox4);
-            Produtos.Controls.Add(textBox3);
-            Produtos.Controls.Add(textBox2);
+            Produtos.Controls.Add(txtUnidadeVenda);
+            Produtos.Controls.Add(txtValorUnit);
+            Produtos.Controls.Add(txtCodBar);
             Produtos.Controls.Add(textBox1);
             Produtos.Controls.Add(label1);
             Produtos.Location = new Point(65, 69);
@@ -138,6 +138,7 @@
             btnAdicionar.TabIndex = 16;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // label8
             // 
@@ -148,17 +149,17 @@
             label8.TabIndex = 15;
             label8.Text = "Desconto";
             // 
-            // textBox6
+            // txtDesconto
             // 
-            textBox6.Location = new Point(24, 218);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(100, 23);
-            textBox6.TabIndex = 14;
+            txtDesconto.Location = new Point(24, 218);
+            txtDesconto.Name = "txtDesconto";
+            txtDesconto.Size = new Size(100, 23);
+            txtDesconto.TabIndex = 14;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(182, 147);
+            label7.Location = new Point(276, 145);
             label7.Name = "label7";
             label7.Size = new Size(58, 15);
             label7.TabIndex = 13;
@@ -176,18 +177,18 @@
             // cmbCategoria
             // 
             cmbCategoria.FormattingEnabled = true;
-            cmbCategoria.Location = new Point(181, 166);
+            cmbCategoria.Location = new Point(276, 166);
             cmbCategoria.Name = "cmbCategoria";
-            cmbCategoria.Size = new Size(437, 23);
+            cmbCategoria.Size = new Size(342, 23);
             cmbCategoria.TabIndex = 11;
             cmbCategoria.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
-            // textBox5
+            // txtDescricao
             // 
-            textBox5.Location = new Point(24, 166);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(124, 23);
-            textBox5.TabIndex = 10;
+            txtDescricao.Location = new Point(24, 166);
+            txtDescricao.Name = "txtDescricao";
+            txtDescricao.Size = new Size(234, 23);
+            txtDescricao.TabIndex = 10;
             // 
             // label5
             // 
@@ -198,12 +199,12 @@
             label5.TabIndex = 9;
             label5.Text = "Estoque Mínimo";
             // 
-            // numericUpDown1
+            // npEstoqueMinimo
             // 
-            numericUpDown1.Location = new Point(486, 107);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(50, 23);
-            numericUpDown1.TabIndex = 8;
+            npEstoqueMinimo.Location = new Point(486, 107);
+            npEstoqueMinimo.Name = "npEstoqueMinimo";
+            npEstoqueMinimo.Size = new Size(50, 23);
+            npEstoqueMinimo.TabIndex = 8;
             // 
             // label4
             // 
@@ -232,27 +233,27 @@
             label2.TabIndex = 5;
             label2.Text = "Código de barras";
             // 
-            // textBox4
+            // txtUnidadeVenda
             // 
-            textBox4.Location = new Point(330, 107);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(125, 23);
-            textBox4.TabIndex = 4;
-            textBox4.Text = "Ex. Caixa";
+            txtUnidadeVenda.Location = new Point(330, 107);
+            txtUnidadeVenda.Name = "txtUnidadeVenda";
+            txtUnidadeVenda.Size = new Size(125, 23);
+            txtUnidadeVenda.TabIndex = 4;
+            txtUnidadeVenda.Text = "Ex. Caixa";
             // 
-            // textBox3
+            // txtValorUnit
             // 
-            textBox3.Location = new Point(180, 107);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(130, 23);
-            textBox3.TabIndex = 3;
+            txtValorUnit.Location = new Point(180, 107);
+            txtValorUnit.Name = "txtValorUnit";
+            txtValorUnit.Size = new Size(130, 23);
+            txtValorUnit.TabIndex = 3;
             // 
-            // textBox2
+            // txtCodBar
             // 
-            textBox2.Location = new Point(24, 107);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(124, 23);
-            textBox2.TabIndex = 2;
+            txtCodBar.Location = new Point(24, 107);
+            txtCodBar.Name = "txtCodBar";
+            txtCodBar.Size = new Size(124, 23);
+            txtCodBar.TabIndex = 2;
             // 
             // dgvProdutos
             // 
@@ -309,21 +310,20 @@
             clnCategoria.HeaderText = "Categoria ID";
             clnCategoria.Name = "clnCategoria";
             clnCategoria.ReadOnly = true;
-            clnCategoria.Width = 50;
             // 
             // clnEstoque
             // 
             clnEstoque.HeaderText = "Estoque Mínimo";
             clnEstoque.Name = "clnEstoque";
             clnEstoque.ReadOnly = true;
-            clnEstoque.Width = 50;
+            clnEstoque.Width = 150;
             // 
             // clsClasseDesc
             // 
             clsClasseDesc.HeaderText = "Classe Desconto";
             clsClasseDesc.Name = "clsClasseDesc";
             clsClasseDesc.ReadOnly = true;
-            clsClasseDesc.Width = 50;
+            clsClasseDesc.Width = 150;
             // 
             // clnImagem
             // 
@@ -336,6 +336,7 @@
             clnDataCad.HeaderText = "Data Cadastro";
             clnDataCad.Name = "clnDataCad";
             clnDataCad.ReadOnly = true;
+            clnDataCad.Width = 150;
             // 
             // label9
             // 
@@ -359,7 +360,7 @@
             Text = "FormProdutos";
             Produtos.ResumeLayout(false);
             Produtos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)npEstoqueMinimo).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -373,22 +374,23 @@
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox txtUnidadeVenda;
+        private TextBox txtValorUnit;
+        private TextBox txtCodBar;
         private Button btnConsultar;
         private Button btnEditar;
         private Button btnAdicionar;
         private Label label8;
-        private TextBox textBox6;
+        private TextBox txtDesconto;
         private Label label7;
         private Label label6;
         private ComboBox cmbCategoria;
-        private TextBox textBox5;
+        private TextBox txtDescricao;
         private Label label5;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown npEstoqueMinimo;
         private System.Windows.Forms.Timer timer1;
         private DataGridView dgvProdutos;
+        private Label label9;
         private DataGridViewTextBoxColumn clnId;
         private DataGridViewTextBoxColumn clnCódigo;
         private DataGridViewTextBoxColumn clnDes;
@@ -399,6 +401,5 @@
         private DataGridViewTextBoxColumn clsClasseDesc;
         private DataGridViewTextBoxColumn clnImagem;
         private DataGridViewTextBoxColumn clnDataCad;
-        private Label label9;
     }
 }

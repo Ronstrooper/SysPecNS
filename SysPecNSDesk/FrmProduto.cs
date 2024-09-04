@@ -58,5 +58,20 @@ namespace SysPecNSDesk
         {
 
         }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            Produto produto = new(txtCodBar.Text, txtDescricao.Text, double.Parse(txtValorUnit.Text), txtUnidadeVenda.Text,
+                Categoria.ObterPorId(Convert.ToInt32(cmbCategoria.SelectedValue)),
+                (int)npEstoqueMinimo.Value, double.Parse(txtDesconto.Text)
+
+                );
+            produto.Inserir();
+            if (produto.Id > 0)
+            {
+                MessageBox.Show($"Produto inserido com sucesso com o id {produto.Id}");
+                FrmProduto_Load(sender, e);
+            }
+        }
     }
 }
