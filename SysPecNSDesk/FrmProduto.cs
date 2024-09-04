@@ -89,6 +89,21 @@ namespace SysPecNSDesk
                 txtId.Focus();
                 txtId.ReadOnly = false;
             }
+            else
+            {
+                if (txtId.Text.Length > 0)
+                {
+                    Produto produto = Produto.ObterPorId(int.Parse(txtId.Text));
+                    txtCodBar.Text = produto.CodBar;
+                    txtValorUnit.Text = Convert.ToString(produto.ValorUnit);
+                    txtDescricao.Text = produto.Descricao;
+                    txtDesconto.Text = produto.ClasseDesconto.ToString();
+                    //npEstoqueMinimo.Value = produto.EstoqueMinimo;
+                    cmbCategoria.SelectedIndex =
+                        cmbCategoria.FindString(produto.Categoria.Nome);
+                    btnEditar.Enabled = true;
+                }
+            }
         }
     }
 }
