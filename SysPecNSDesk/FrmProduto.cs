@@ -83,7 +83,6 @@ namespace SysPecNSDesk
                 txtUnidadeVenda.Clear();
                 txtDescricao.Clear();
                 txtDesconto.Clear();
-                txtUnidadeVenda.Clear();
                 npEstoqueMinimo.Value = 0;
                 btnConsultar.Text = "&Obter por ID";
                 txtId.Focus();
@@ -104,6 +103,34 @@ namespace SysPecNSDesk
                     btnEditar.Enabled = true;
                 }
             }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Produto produto = new(int.Parse(txtId.Text),
+                txtCodBar.Text,
+                txtDescricao.Text,
+                double.Parse(txtValorUnit.Text),
+                txtUnidadeVenda.Text,
+                Categoria.ObterPorId(Convert.ToInt32(cmbCategoria.SelectedValue)),
+                (double)npEstoqueMinimo.Value,
+                double.Parse(txtDesconto.Text)
+                );
+            produto.Atualizar();//grava alterações no banco
+            MessageBox.Show($"Produto {produto.Id} - {produto.Descricao} atualizado com sucesso");
+            btnEditar.Enabled = false;
+            txtId.ReadOnly = true;
+            btnConsultar.Text = "&Consultar";
+            LimpaControles(); // chama e usa o método limpa controles
+            FrmProduto_Load(sender, e);
+        }
+        private void LimpaControles() //método limpa controles 
+        {
+            txtCodBar.Clear();
+            txtValorUnit.Clear();
+            txtUnidadeVenda.Clear();
+            txtDescricao.Clear();
+            txtDesconto.Clear();
         }
     }
 }

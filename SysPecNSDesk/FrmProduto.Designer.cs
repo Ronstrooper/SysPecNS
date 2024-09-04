@@ -51,7 +51,6 @@
             txtCodBar = new TextBox();
             timer1 = new System.Windows.Forms.Timer(components);
             dgvProdutos = new DataGridView();
-            label9 = new Label();
             clnId = new DataGridViewTextBoxColumn();
             clnCódigo = new DataGridViewTextBoxColumn();
             clnDes = new DataGridViewTextBoxColumn();
@@ -62,6 +61,7 @@
             clsClasseDesc = new DataGridViewTextBoxColumn();
             clnImagem = new DataGridViewTextBoxColumn();
             clnDataCad = new DataGridViewTextBoxColumn();
+            label9 = new Label();
             Produtos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)npEstoqueMinimo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
@@ -131,6 +131,7 @@
             btnEditar.TabIndex = 8;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnAdicionar
             // 
@@ -272,16 +273,6 @@
             dgvProdutos.TabIndex = 3;
             dgvProdutos.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Swis721 BlkCn BT", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(352, 18);
-            label9.Name = "label9";
-            label9.Size = new Size(136, 39);
-            label9.TabIndex = 4;
-            label9.Text = "Produtos";
-            // 
             // clnId
             // 
             clnId.HeaderText = "ID";
@@ -349,6 +340,16 @@
             clnDataCad.Name = "clnDataCad";
             clnDataCad.ReadOnly = true;
             clnDataCad.Width = 150;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Swis721 BlkCn BT", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Location = new Point(352, 18);
+            label9.Name = "label9";
+            label9.Size = new Size(136, 39);
+            label9.TabIndex = 4;
+            label9.Text = "Produtos";
             // 
             // FrmProduto
             // 
