@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +11,13 @@ namespace SysPecNSLib
     {
         public int ProdutoId { get; set; }
         public int FornecedorId { get; set; }
-
-        public ProdutoFornecedor(){}
-        public ProdutoFornecedor (int produtoid, int fornecedorid)
+        public ProdutoFornecedor() { }
+        public ProdutoFornecedor(int produtoId, int fornecedorId)
         {
             ProdutoId = produtoId;
             FornecedorId = fornecedorId;
         }
+
         public static List<ProdutoFornecedor>ObterListaPorFornecedor(int fornecedorId)
         {
             List<ProdutoFornecedor> lista = new();
@@ -27,8 +28,13 @@ namespace SysPecNSLib
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                lista.Add(newProdutoFornecedor)
+                lista.Add(new ProdutoFornecedor(
+                    dr.GetInt32(0),
+                    dr.GetInt32(1)
+                ));
             }
+            cmd.Connection.Close();
+            return lista;
         }
     }
 }
