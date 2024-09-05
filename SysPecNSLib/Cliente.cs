@@ -11,64 +11,98 @@ namespace SysPecNSLib
 {
     public class Cliente // criação dos métodos construtores 
     {
-    public int Id { get; set; } // interroagação "?" indica que o valor pode ser nulo
+        public int Id { get; set; } // interroagação "?" indica que o valor pode ser nulo
     public string? Nome { get; set; }
-    public string? Cpf { get; set; }
+    public string? CPF { get; set; }
     public string? Telefone { get; set; }
     public string? Email { get; set; }
-    public DateTime DataNascimento { get; set; } // de acordo com data_nasc no banco de dados
-    public DateTime DataCadastro { get; set; } // de acordo com data_cad no banco de dados
+    public DateTime Data_nasc { get; set; } // de acordo com data_nasc no banco de dados
+    public DateTime Data_cad { get; set; } // de acordo com data_cad no banco de dados
     public bool Ativo { get; set; }
-        public Cliente() 
-        {
+    public List<Endereco>? Enderecos { get; set; } // Classe pública Endereco
+
+        public Cliente()
+        { 
             Id = 0;
-        } // 4 métodos construtores
-        public Cliente(int id, string? nome, string? cpf, string? telefone, string? email, DateTime dataNascimento, DateTime dataCadastro, bool ativo) 
+        }
+        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime data_nasc)
+        {
+            Nome = nome;
+            CPF = cpf;
+            Telefone = telefone;
+            Email = email;
+            Data_nasc = data_nasc;
+        }
+
+        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime data_nasc, DateTime data_cad, bool ativo)
+        {
+
+            Nome = nome;
+            CPF = cpf;
+            Telefone = telefone;
+            Email = email;
+            Data_nasc = data_nasc;
+            Data_cad = data_cad;
+            Ativo = ativo;
+        }
+
+        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime data_nasc, DateTime data_cad, bool ativo, List<Endereco> Endereco)
+        {
+            Nome = nome;
+            CPF = cpf;
+            Telefone = telefone;
+            Email = email;
+            Data_nasc = data_nasc;
+            Data_cad = data_cad;
+            Ativo = ativo;
+            Enderecos = Endereco;
+        }
+
+        public Cliente(int id, string? nome, string? cpf, string? telefone, string? email, DateTime data_nasc, DateTime data_cad, bool ativo)
         {
             Id = id;
             Nome = nome;
-            Cpf = cpf;
+            CPF = cpf;
             Telefone = telefone;
             Email = email;
-            DataNascimento = dataNascimento;
-            DataCadastro = dataCadastro;
+            Data_nasc = data_nasc;
+            Data_cad = data_cad;
             Ativo = ativo;
         }
-        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime dataNascimento, DateTime dataCadastro, bool ativo)
+
+        public Cliente(int id, string? nome, string? cpf, string? telefone, string? email, DateTime data_nasc, DateTime data_cad, bool ativo, List<Endereco> Endereco)
         {
+            Id = id;
             Nome = nome;
-            Cpf = cpf;
+            CPF = cpf;
             Telefone = telefone;
             Email = email;
-            DataNascimento = dataNascimento;
-            DataCadastro = dataCadastro;
+            Data_nasc = data_nasc;
+            Data_cad = data_cad;
             Ativo = ativo;
+            Enderecos = Endereco;
         }
-        public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime dataNascimento, DateTime dataCadastro)
-        {
-            Nome = nome;
-            Cpf = cpf;
-            Telefone = telefone;
-            Email = email;
-            DataNascimento = dataNascimento;
-            DataCadastro = dataCadastro;
-        }
+
 
         public void Inserir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_cliente_insert";
-            cmd.Parameters.AddWithValue("spid", Id);
+            //cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spnome", Nome);
-            cmd.Parameters.AddWithValue("spcpf", Cpf);
+            cmd.Parameters.AddWithValue("spcpf", CPF);
             cmd.Parameters.AddWithValue("sptelefone", Telefone);
             cmd.Parameters.AddWithValue("spemail", Email);
-            cmd.Parameters.AddWithValue("spdata_nasc", DataNascimento);
-            cmd.Parameters.AddWithValue("spdata_cad", DataCadastro);
-            cmd.Parameters.AddWithValue("spativo", Ativo);
+            cmd.Parameters.AddWithValue("spdata_nasc", Data_nasc);
+            //cmd.Parameters.AddWithValue("spdata_cad", Data_cad);
+            //cmd.Parameters.AddWithValue("spativo", Ativo);
             var dr = cmd.ExecuteReader();
-
+            while (dr.Read())
+            {
+                Id = dr.GetInt32(0);
+            }
+            cmd.Connection.Close();
         }
 
         public static Cliente ObterPorId(int id)
@@ -76,7 +110,7 @@ namespace SysPecNSLib
             Cliente cliente = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from cliente where id = {id}";
+            cmd.CommandText = $"select * from clientes where id = {id};";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
@@ -91,20 +125,31 @@ namespace SysPecNSLib
                     dr.GetBoolean(7)
                     );
             }
+            cmd.Connection.Close();
             return cliente;
         }
 
-        public static List<Cliente> ObterLista()
+        public static List<Cliente> ObterLista(string? nome = "")
         {
             List<Cliente> lista = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from clientes order by nome";
+            //cmd.CommandText = $"select * from clientes order by nome";
+            if (nome == "")
+            {
+                cmd.CommandText = "select * from clientes order by nome limit 10;";
+            }
+            else
+            {
+                cmd.CommandText = $"select from clientes" +
+                    $"where nome like '%{nome}% order by nome limit 10';";
+            }
+
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 lista.Add(
-                    new Cliente(
+                    new(
                     dr.GetInt32(0),
                     dr.GetString(1),
                     dr.GetString(2),
@@ -115,6 +160,7 @@ namespace SysPecNSLib
                     dr.GetBoolean(7)
               ));
             }
+            cmd.Connection.Close();
             return lista;
         }
         public void Atualizar()
@@ -124,14 +170,14 @@ namespace SysPecNSLib
             cmd.CommandText = "sp_cliente_update";
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spnome", Nome);
-            cmd.Parameters.AddWithValue("spcpf", Cpf);
+            //cmd.Parameters.AddWithValue("spcpf", CPF);
             cmd.Parameters.AddWithValue("sptelefone", Telefone);
-            cmd.Parameters.AddWithValue("spemail", Email);
-            cmd.Parameters.AddWithValue("spdata_nasc", DataNascimento);
-            cmd.Parameters.AddWithValue("spdata_cad", DataCadastro);
-            cmd.Parameters.AddWithValue("spativo", Ativo);
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
+            //cmd.Parameters.AddWithValue("spemail", Email);
+            cmd.Parameters.AddWithValue("spdata_nasc", Data_nasc);
+            //cmd.Parameters.AddWithValue("spdata_cad", Data_cad);
+            //cmd.Parameters.AddWithValue("spativo", Ativo);
+            //cmd.ExecuteNonQuery();
+            //cmd.Connection.Close();
         }
         public static void Arquivar(int id)
         {
