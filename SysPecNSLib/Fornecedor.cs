@@ -29,22 +29,22 @@ namespace SysPecNSLib
 
         public static Fornecedor ObterPorId(int id)
         {
-            Fornecedor fornecedor = null;
+            Fornecedor fornecedor = new();
             var cmd = Banco.Abrir();
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"select id, razao_social, fantasia, cnpj, contato, telefone, email from fornecedores where id = {id}";
+            //cmd.CommandType = System.Data.CommandType.Text; 
+            cmd.CommandText = $"select * from fornecedor where id = {id}";
 
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                fornecedor = new Fornecedor(
+                fornecedor = new( //Get deve ser de acordo com o método construtor criado
                     dr.GetInt32(0),
-                    dr.GetInt32(1),
-                    dr.GetInt32(2),
-                    dr.GetInt32(3),
-                    dr.GetInt32(4),
-                    dr.GetInt32(5),
-                    dr.GetInt32(6)
+                    dr.GetString(1),
+                    dr.GetString(2),
+                    dr.GetString(3),
+                    dr.GetString(4),
+                    dr.GetString(5),
+                    dr.GetString(6)
                     );
             }
             cmd.Connection.Close();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SysPecNSLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,6 +38,15 @@ namespace SysPecNSDesk
             FrmProduto frmProduto = new();
             frmProduto.MdiParent = this;
             frmProduto.Show();
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            FrmLogin frmLogin = new(); //Load do Formulário de Login dentro do Formulário Principal
+            //frmLogin.MdiParent = this;
+            frmLogin.ShowDialog();
+            Text += $" ({Program.UsuarioLogado.Email})"; //código para inserir o email do usuário na barra da janela
+            toolStripStatusLabel1.Text = $"{Program.UsuarioLogado.Nome} - {Program.UsuarioLogado.Nivel.Nome}"; //atribui valor ao usuário logado na Strip do form principal
         }
     }
 }
