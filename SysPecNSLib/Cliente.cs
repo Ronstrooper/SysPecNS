@@ -150,7 +150,7 @@ namespace SysPecNSLib
             {
                 lista.Add(
                     new(
-                    dr.GetInt32(0),
+                    dr.GetInt32(0), 
                     dr.GetString(1),
                     dr.GetString(2),
                     dr.GetString(3),
