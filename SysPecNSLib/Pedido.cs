@@ -92,7 +92,7 @@ namespace SysPecNSLib
                     dr.GetString(4), // retorna status do pedido
                     dr.GetDouble(5) // pega o valor do desconto no banco de dados
                     //[Incluir Lista de Itens]
-                    // ,ItemPedido.ObterListaPorPedido(dr.GetInt32(0)) //Id do Pedido
+                     ,ItemPedido.ObterListaPorPedido(dr.GetInt32(0)) //Id do Pedido // busca uma coleção de itens associado a ele, na classe ItemPedido.
                     );
             }
 
