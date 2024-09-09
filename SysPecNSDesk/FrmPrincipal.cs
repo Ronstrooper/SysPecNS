@@ -48,5 +48,12 @@ namespace SysPecNSDesk
             Text += $" ({Program.UsuarioLogado.Email})"; //código para inserir o email do usuário na barra da janela
             toolStripStatusLabel1.Text = $"{Program.UsuarioLogado.Nome} - {Program.UsuarioLogado.Nivel.Nome}"; //atribui valor ao usuário logado na Strip do form principal
         }
+
+        private void novoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            FrmPedidoNovo frmPedidoNovo = new();
+            frmPedidoNovo.MdiParent = this;
+            frmPedidoNovo.Show();
+        }
     }
 }
