@@ -170,7 +170,7 @@ namespace SysPecNSDesk
                 txtTipo_Endereco.Clear();
                 txtNome.Focus();
 
-                FrmClientes_Load(sender, e);// não sei o que é
+                FrmClientes_Load(sender, e);
             }
             else
             {
