@@ -56,9 +56,43 @@
             Data_nasc = new DataGridViewTextBoxColumn();
             Data_cad = new DataGridViewTextBoxColumn();
             Ativo = new DataGridViewCheckBoxColumn();
+            txtId_Endereco = new TextBox();
+            txtidCliente_Endereco = new TextBox();
+            txtCEP_Endereco = new TextBox();
+            txtNumero_Endereco = new TextBox();
+            txtComplemento_Endereco = new TextBox();
+            txtBairro_Endereco = new TextBox();
+            txtCidade_Endereco = new TextBox();
+            txtUF_Endereco = new TextBox();
+            txtTipo_Endereco = new TextBox();
+            brnInserir_Endereco = new Button();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label13 = new Label();
+            label14 = new Label();
+            label15 = new Label();
+            label16 = new Label();
+            txtLogradouro_Endereco = new TextBox();
+            label17 = new Label();
+            txtBuscaClientes_Endereco = new TextBox();
+            dataGridView2 = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            IDCliente = new DataGridViewTextBoxColumn();
+            CEP = new DataGridViewTextBoxColumn();
+            Logradouro = new DataGridViewTextBoxColumn();
+            Numero = new DataGridViewTextBoxColumn();
+            Complemento = new DataGridViewTextBoxColumn();
+            Bairro = new DataGridViewTextBoxColumn();
+            Cidade = new DataGridViewCheckBoxColumn();
+            UF = new DataGridViewTextBoxColumn();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -100,6 +134,29 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(dataGridView2);
+            tabPage2.Controls.Add(txtBuscaClientes_Endereco);
+            tabPage2.Controls.Add(label17);
+            tabPage2.Controls.Add(txtLogradouro_Endereco);
+            tabPage2.Controls.Add(label16);
+            tabPage2.Controls.Add(label15);
+            tabPage2.Controls.Add(label14);
+            tabPage2.Controls.Add(label13);
+            tabPage2.Controls.Add(label12);
+            tabPage2.Controls.Add(label11);
+            tabPage2.Controls.Add(label10);
+            tabPage2.Controls.Add(label9);
+            tabPage2.Controls.Add(label8);
+            tabPage2.Controls.Add(brnInserir_Endereco);
+            tabPage2.Controls.Add(txtTipo_Endereco);
+            tabPage2.Controls.Add(txtUF_Endereco);
+            tabPage2.Controls.Add(txtCidade_Endereco);
+            tabPage2.Controls.Add(txtBairro_Endereco);
+            tabPage2.Controls.Add(txtComplemento_Endereco);
+            tabPage2.Controls.Add(txtNumero_Endereco);
+            tabPage2.Controls.Add(txtCEP_Endereco);
+            tabPage2.Controls.Add(txtidCliente_Endereco);
+            tabPage2.Controls.Add(txtId_Endereco);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -299,6 +356,248 @@
             Ativo.Name = "Ativo";
             Ativo.ReadOnly = true;
             // 
+            // txtId_Endereco
+            // 
+            txtId_Endereco.Location = new Point(28, 56);
+            txtId_Endereco.Name = "txtId_Endereco";
+            txtId_Endereco.Size = new Size(100, 23);
+            txtId_Endereco.TabIndex = 0;
+            // 
+            // txtidCliente_Endereco
+            // 
+            txtidCliente_Endereco.Location = new Point(155, 56);
+            txtidCliente_Endereco.Name = "txtidCliente_Endereco";
+            txtidCliente_Endereco.Size = new Size(105, 23);
+            txtidCliente_Endereco.TabIndex = 1;
+            // 
+            // txtCEP_Endereco
+            // 
+            txtCEP_Endereco.Location = new Point(287, 56);
+            txtCEP_Endereco.Name = "txtCEP_Endereco";
+            txtCEP_Endereco.Size = new Size(147, 23);
+            txtCEP_Endereco.TabIndex = 2;
+            // 
+            // txtNumero_Endereco
+            // 
+            txtNumero_Endereco.Location = new Point(28, 125);
+            txtNumero_Endereco.Name = "txtNumero_Endereco";
+            txtNumero_Endereco.Size = new Size(100, 23);
+            txtNumero_Endereco.TabIndex = 3;
+            // 
+            // txtComplemento_Endereco
+            // 
+            txtComplemento_Endereco.Location = new Point(160, 125);
+            txtComplemento_Endereco.Name = "txtComplemento_Endereco";
+            txtComplemento_Endereco.Size = new Size(166, 23);
+            txtComplemento_Endereco.TabIndex = 4;
+            // 
+            // txtBairro_Endereco
+            // 
+            txtBairro_Endereco.Location = new Point(348, 125);
+            txtBairro_Endereco.Name = "txtBairro_Endereco";
+            txtBairro_Endereco.Size = new Size(171, 23);
+            txtBairro_Endereco.TabIndex = 5;
+            // 
+            // txtCidade_Endereco
+            // 
+            txtCidade_Endereco.Location = new Point(28, 186);
+            txtCidade_Endereco.Name = "txtCidade_Endereco";
+            txtCidade_Endereco.Size = new Size(100, 23);
+            txtCidade_Endereco.TabIndex = 6;
+            // 
+            // txtUF_Endereco
+            // 
+            txtUF_Endereco.Location = new Point(160, 186);
+            txtUF_Endereco.Name = "txtUF_Endereco";
+            txtUF_Endereco.Size = new Size(100, 23);
+            txtUF_Endereco.TabIndex = 7;
+            // 
+            // txtTipo_Endereco
+            // 
+            txtTipo_Endereco.Location = new Point(287, 186);
+            txtTipo_Endereco.Name = "txtTipo_Endereco";
+            txtTipo_Endereco.Size = new Size(117, 23);
+            txtTipo_Endereco.TabIndex = 8;
+            // 
+            // brnInserir_Endereco
+            // 
+            brnInserir_Endereco.Location = new Point(444, 185);
+            brnInserir_Endereco.Name = "brnInserir_Endereco";
+            brnInserir_Endereco.Size = new Size(75, 23);
+            brnInserir_Endereco.TabIndex = 9;
+            brnInserir_Endereco.Text = "Inserir";
+            brnInserir_Endereco.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(27, 33);
+            label8.Name = "label8";
+            label8.Size = new Size(18, 15);
+            label8.TabIndex = 10;
+            label8.Text = "ID";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(155, 33);
+            label9.Name = "label9";
+            label9.Size = new Size(75, 15);
+            label9.TabIndex = 11;
+            label9.Text = "ID do Cliente";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(287, 33);
+            label10.Name = "label10";
+            label10.Size = new Size(28, 15);
+            label10.TabIndex = 12;
+            label10.Text = "CEP";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(28, 107);
+            label11.Name = "label11";
+            label11.Size = new Size(51, 15);
+            label11.TabIndex = 13;
+            label11.Text = "Número";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(160, 107);
+            label12.Name = "label12";
+            label12.Size = new Size(84, 15);
+            label12.TabIndex = 14;
+            label12.Text = "Complemento";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(348, 107);
+            label13.Name = "label13";
+            label13.Size = new Size(38, 15);
+            label13.TabIndex = 15;
+            label13.Text = "Bairro";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(28, 168);
+            label14.Name = "label14";
+            label14.Size = new Size(44, 15);
+            label14.TabIndex = 16;
+            label14.Text = "Cidade";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(160, 168);
+            label15.Name = "label15";
+            label15.Size = new Size(21, 15);
+            label15.TabIndex = 17;
+            label15.Text = "UF";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(287, 168);
+            label16.Name = "label16";
+            label16.Size = new Size(30, 15);
+            label16.TabIndex = 18;
+            label16.Text = "Tipo";
+            // 
+            // txtLogradouro_Endereco
+            // 
+            txtLogradouro_Endereco.Location = new Point(456, 56);
+            txtLogradouro_Endereco.Name = "txtLogradouro_Endereco";
+            txtLogradouro_Endereco.Size = new Size(191, 23);
+            txtLogradouro_Endereco.TabIndex = 19;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(459, 33);
+            label17.Name = "label17";
+            label17.Size = new Size(69, 15);
+            label17.TabIndex = 20;
+            label17.Text = "Logradouro";
+            // 
+            // txtBuscaClientes_Endereco
+            // 
+            txtBuscaClientes_Endereco.Location = new Point(70, 253);
+            txtBuscaClientes_Endereco.Name = "txtBuscaClientes_Endereco";
+            txtBuscaClientes_Endereco.Size = new Size(698, 23);
+            txtBuscaClientes_Endereco.TabIndex = 21;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, IDCliente, CEP, Logradouro, Numero, Complemento, Bairro, Cidade, UF });
+            dataGridView2.Location = new Point(53, 297);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.ReadOnly = true;
+            dataGridView2.RowHeadersVisible = false;
+            dataGridView2.Size = new Size(761, 206);
+            dataGridView2.TabIndex = 22;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "ID";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // IDCliente
+            // 
+            IDCliente.HeaderText = "Cliente";
+            IDCliente.Name = "IDCliente";
+            IDCliente.ReadOnly = true;
+            // 
+            // CEP
+            // 
+            CEP.HeaderText = "Cpf";
+            CEP.Name = "CEP";
+            CEP.ReadOnly = true;
+            // 
+            // Logradouro
+            // 
+            Logradouro.HeaderText = "Telefone";
+            Logradouro.Name = "Logradouro";
+            Logradouro.ReadOnly = true;
+            // 
+            // Numero
+            // 
+            Numero.HeaderText = "Email";
+            Numero.Name = "Numero";
+            Numero.ReadOnly = true;
+            // 
+            // Complemento
+            // 
+            Complemento.HeaderText = "Data de Nascimento";
+            Complemento.Name = "Complemento";
+            Complemento.ReadOnly = true;
+            // 
+            // Bairro
+            // 
+            Bairro.HeaderText = "Cadastro";
+            Bairro.Name = "Bairro";
+            Bairro.ReadOnly = true;
+            // 
+            // Cidade
+            // 
+            Cidade.HeaderText = "Ativo";
+            Cidade.Name = "Cidade";
+            Cidade.ReadOnly = true;
+            // 
+            // UF
+            // 
+            UF.HeaderText = "Endereco";
+            UF.Name = "UF";
+            UF.ReadOnly = true;
+            // 
             // FrmClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -310,7 +609,10 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
 
@@ -344,5 +646,37 @@
         private DataGridViewTextBoxColumn Data_nasc;
         private DataGridViewTextBoxColumn Data_cad;
         private DataGridViewCheckBoxColumn Ativo;
+        private Button brnInserir_Endereco;
+        private TextBox txtTipo_Endereco;
+        private TextBox txtUF_Endereco;
+        private TextBox txtCidade_Endereco;
+        private TextBox txtBairro_Endereco;
+        private TextBox txtComplemento_Endereco;
+        private TextBox txtNumero_Endereco;
+        private TextBox txtCEP_Endereco;
+        private TextBox txtidCliente_Endereco;
+        private TextBox txtId_Endereco;
+        private Label label16;
+        private Label label15;
+        private Label label14;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private Label label10;
+        private Label label9;
+        private Label label8;
+        private Label label17;
+        private TextBox txtLogradouro_Endereco;
+        private DataGridView dataGridView2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn IDCliente;
+        private DataGridViewTextBoxColumn CEP;
+        private DataGridViewTextBoxColumn Logradouro;
+        private DataGridViewTextBoxColumn Numero;
+        private DataGridViewTextBoxColumn Complemento;
+        private DataGridViewTextBoxColumn Bairro;
+        private DataGridViewCheckBoxColumn Cidade;
+        private DataGridViewTextBoxColumn UF;
+        private TextBox txtBuscaClientes_Endereco;
     }
 }
