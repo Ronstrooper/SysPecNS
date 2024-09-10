@@ -35,7 +35,7 @@ namespace SysPecNSDesk
 
         private void novoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmProduto frmProduto = new();
+            FrmProduto frmProduto = new(); //FrmProduto
             frmProduto.MdiParent = this;
             frmProduto.Show();
         }
@@ -54,6 +54,18 @@ namespace SysPecNSDesk
             FrmPedidoNovo frmPedidoNovo = new();
             frmPedidoNovo.MdiParent = this;
             frmPedidoNovo.Show();
+        }
+
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmClientes frmClientes = new();
+            frmClientes.MdiParent = this;
+            frmClientes.Show();
+        }
+
+        private void listaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
