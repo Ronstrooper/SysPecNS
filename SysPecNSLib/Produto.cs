@@ -122,7 +122,30 @@ namespace SysPecNSLib
 
             return produto; //métrodo construtor entrega um objeto do valor produto
         }
-        public static List<Produto> ObterLista()
+        public static Produto ObterPorId(String id) // CONFERIR COD AQUI
+        {
+            Produto produto = new(); //criação objeto Produto, se valendo de um método construto vazio
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select * from produtos where cod_barras = '{id}'";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                produto = new(
+                    dr.GetInt32(0),
+                    dr.GetString(1),
+                    dr.GetString(2),
+                    dr.GetDouble(3), // de acordo com o método construtor e banco de dados
+                    dr.GetString(4),
+                    Categoria.ObterPorId(dr.GetInt32(5)), // campo espera objeto do tipo categoria 
+                    dr.GetDouble(6), // double no banoc de daados
+                    dr.GetDouble(7),
+                    (byte[])dr.GetValue(8), // imagem vem nulo, campo que pode ser nulo, poderia ser apenas "null"
+                    dr.GetDateTime(9) //Datetime no método construtor
+                    );
+            }
+            return produto;
+        }
+            public static List<Produto> ObterLista()
         {
             List <Produto> produtos = new();
             var cmd = Banco.Abrir();
