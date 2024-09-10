@@ -86,8 +86,8 @@ namespace SysPecNSDesk
                 dtgProdutoFornecedor.Rows[cont].Cells[0].Value = fornecedor.ProdutoId.Id;
                 dtgProdutoFornecedor.Rows[cont].Cells[1].Value = fornecedor.ProdutoId.CodBar;
                 dtgProdutoFornecedor.Rows[cont].Cells[2].Value = fornecedor.ProdutoId.Descricao;
-                dtgProdutoFornecedor.Rows[cont].Cells[3].Value = fornecedor.FornecedorId.Id; //fornecedorid corrigir na classe Fornecedor
-                dtgProdutoFornecedor.Rows[cont].Cells[4].Value = fornecedor.FornecedorId.Fantasia; //fornecedorid corrigir na classe Fornecedor
+                dtgProdutoFornecedor.Rows[cont].Cells[3].Value = fornecedor.Fornecedorid.Id; //fornecedorid corrigir na classe Fornecedor
+                dtgProdutoFornecedor.Rows[cont].Cells[4].Value = fornecedor.Fornecedorid.Fantasia; //fornecedorid corrigir na classe Fornecedor
                 cont++;
             }
 

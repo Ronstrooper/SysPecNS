@@ -18,12 +18,12 @@ namespace SysPecNSLib
         public string? Telefone { get; set; }
         public string? Email { get; set; }
         public Produto ProdutoId { get; set; }
-        public Fornecedor FornecedorId { get; set; } //Fornecedorid
+        public Fornecedor Fornecedorid { get; set; } //Fornecedorid
         public Fornecedor() { }
         public Fornecedor (Produto produto_Id, Fornecedor fornecedorid)
         {
             ProdutoId = produto_Id; //relação classe Produto
-            FornecedorId = fornecedorid; //FornecedorId 
+            Fornecedorid = fornecedorid; //FornecedorId 
         }
         public Fornecedor(string? razaoSocial, string? fantasia, string? cNPJ, string? contato, string? telefone, string? email)
         {
@@ -106,7 +106,7 @@ namespace SysPecNSLib
         public void InserirpdtFornecedor() //Inserir Produto Fornecedor 
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"insert into produtofornecedor values ('{ProdutoId.Id}', '{FornecedorId.Id}')";
+            cmd.CommandText = $"insert into produtofornecedor values ('{ProdutoId.Id}', '{Fornecedorid.Id}')";
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
