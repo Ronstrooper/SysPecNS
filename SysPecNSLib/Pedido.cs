@@ -56,7 +56,7 @@ namespace SysPecNSLib
             cmd.CommandText = "sp_pedido_insert";
             cmd.Parameters.AddWithValue("spcliente_id",Cliente.Id);
             cmd.Parameters.AddWithValue("spusuario_id", Usuario.Id);
-            Id = Convert.ToInt32(cmd.ExecuteScalar()); 
+            Id = Convert.ToInt32(cmd.ExecuteScalar()); // dando erro
         }
         public void AlterarStatus() //somente alteração do status e desconto
         {

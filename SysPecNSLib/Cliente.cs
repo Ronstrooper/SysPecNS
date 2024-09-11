@@ -97,7 +97,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spdata_nasc", Data_nasc);
             //cmd.Parameters.AddWithValue("spdata_cad", Data_cad);
             //cmd.Parameters.AddWithValue("spativo", Ativo);
-            var dr = cmd.ExecuteReader();
+            var dr = cmd.ExecuteReader(); // dando erro aqui
             while (dr.Read())
             {
                 Id = dr.GetInt32(0);

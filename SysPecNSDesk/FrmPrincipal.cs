@@ -40,7 +40,7 @@ namespace SysPecNSDesk
             frmProduto.Show();
         }
 
-        private void FrmPrincipal_Load(object sender, EventArgs e)
+        private void FrmPrincipal_Load(object sender, EventArgs e) // Load do Formulário Login
         {
             FrmLogin frmLogin = new(); //Load do Formulário de Login dentro do Formulário Principal
             //frmLogin.MdiParent = this;

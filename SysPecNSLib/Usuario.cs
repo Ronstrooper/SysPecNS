@@ -122,7 +122,7 @@ namespace SysPecNSLib
             Usuario usuario = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from usuarios where email = '{email} and senha = md5('{senha}')";
+            cmd.CommandText = $"select * from usuarios where email = '{email}' and senha = md5('{senha}')";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
