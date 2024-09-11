@@ -404,6 +404,7 @@
             textBox2.ReadOnly = true;
             textBox2.Size = new Size(100, 23);
             textBox2.TabIndex = 5;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // txtDescontoPedido
             // 

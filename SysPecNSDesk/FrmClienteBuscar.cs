@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SysPecNSLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,7 +26,31 @@ namespace SysPecNSDesk
 
         private void FrmClienteBuscar_Load(object sender, EventArgs e)
         {
+            CarregaGrid();
+        }
 
+        private void CarregaGrid(string nome = "") // não funciona, apagar se necessário
+        {
+            var lista = Cliente.ObterLista(nome);
+            dataGridView1.Rows.Clear();
+            int cont = 0;
+
+            var list2 = Endereco.ObterListaPorClientesPorId(nome);
+
+            foreach (var cliente in lista)
+            {
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[cont].Cells[0].Value = cliente.Id;
+                dataGridView1.Rows[cont].Cells[1].Value = cliente.Nome;
+                dataGridView1.Rows[cont].Cells[2].Value = cliente.CPF;
+                dataGridView1.Rows[cont].Cells[3].Value = cliente.Telefone;
+                dataGridView1.Rows[cont].Cells[4].Value = cliente.Email;
+                dataGridView1.Rows[cont].Cells[5].Value = cliente.Data_nasc;
+                dataGridView1.Rows[cont].Cells[6].Value = cliente.Data_cad;
+                dataGridView1.Rows[cont].Cells[7].Value = cliente.Ativo;
+
+                cont++;
+            }
         }
     }
 }
