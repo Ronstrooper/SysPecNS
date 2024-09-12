@@ -59,6 +59,7 @@ namespace SysPecNSLib
             {
                 Id = dr.GetInt32(0);
             }
+            cmd.Connection.Close(); // Necessário colocar TODAS AS VEZES em TODAS AS CLASSES
         }
         /// <summary>
         /// Obter por Id é um método estático que retorna
@@ -84,6 +85,7 @@ namespace SysPecNSLib
                     dr.GetBoolean(5)
                     );
             }
+            cmd.Connection.Close(); // UTILIZAR SEMPRE
             return usuario;
         }
         public static List<Usuario> ObterLista(string? nome="") 
@@ -114,7 +116,7 @@ namespace SysPecNSLib
                         )
                     );
             }
-
+            comandosSQL.Connection.Close();
             return Lista;
         }
         public static Usuario EfetuarLogin(string email, string senha) // caso login seja efetuado com sucesso, o usuario vai ter um id associado a ele
@@ -136,6 +138,7 @@ namespace SysPecNSLib
                     );
             }
             // cmd.Connection.Close(); comando para fechar a conexão
+            cmd.Connection.Close();
             return usuario;
         }
         public void Atualizar()

@@ -17,17 +17,17 @@ namespace SysPecNSLib
         public double Quantidade { get; set; }
         public double Desconto { get; set; }
         public ItemPedido () { }
-        public ItemPedido(int idPedido, Produto produto, double valorUnit, double quantidade, double desconto)
+        public ItemPedido(int id, int idPedido, Produto produto, double valorUnit, double quantidade, double desconto)
         {
+            Id = id;
             IdPedido = idPedido;
             Produto = produto;
             ValorUnit = valorUnit;
             Quantidade = quantidade;
             Desconto = desconto;
         }
-        public ItemPedido(int id, int idPedido, Produto produto, double valorUnit, double quantidade, double desconto)
+        public ItemPedido(int idPedido, Produto produto, double valorUnit, double quantidade, double desconto)
         {
-            Id = id;
             IdPedido = idPedido;
             Produto = produto;
             ValorUnit = valorUnit;

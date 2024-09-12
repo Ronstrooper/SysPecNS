@@ -536,6 +536,7 @@
             brnInserir_Endereco.TabIndex = 9;
             brnInserir_Endereco.Text = "Inserir";
             brnInserir_Endereco.UseVisualStyleBackColor = true;
+            brnInserir_Endereco.Click += brnInserir_Endereco_Click_1;
             // 
             // txtTipo_Endereco
             // 

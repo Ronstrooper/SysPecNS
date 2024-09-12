@@ -141,11 +141,7 @@ namespace SysPecNSDesk
 
         private void btnCliente_Click(object sender, EventArgs e)
         {
-            //FrmClienteBuscar frmClienteBuscar = new(); vai dar erro daqui para baixo ao descomentar
-            //frmClienteBuscar.ShowDialog();
-            //txtIdCliente.Text = $"{Program.frmClienteBuscar.Id}";
-            //txtCliente.Text = $"{Program.frmClienteBuscar.CPF}";
-            //txtNomeCliente.Text = $"{Program.frmClienteBuscar.Nome}";
+            
 
             FrmClienteBuscar frmClienteBuscar = new(); // recebe valor vazio
             frmClienteBuscar.ShowDialog();

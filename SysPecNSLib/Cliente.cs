@@ -94,7 +94,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spcpf", CPF);
             cmd.Parameters.AddWithValue("sptelefone", Telefone);
             cmd.Parameters.AddWithValue("spemail", Email);
-            cmd.Parameters.AddWithValue("spdata_nasc", Data_nasc);
+            cmd.Parameters.AddWithValue("spdatanasc", Data_nasc);
             //cmd.Parameters.AddWithValue("spdata_cad", Data_cad);
             //cmd.Parameters.AddWithValue("spativo", Ativo);
             var dr = cmd.ExecuteReader(); // dando erro aqui

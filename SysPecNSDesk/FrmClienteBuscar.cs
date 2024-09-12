@@ -60,6 +60,9 @@ namespace SysPecNSDesk
             //Program.frmClienteBuscar.Nome = Convert.ToString(dataGridView1.Rows[PosicaoLinha].Cells[1].Value);
             //Program.frmClienteBuscar.CPF = Convert.ToString(dataGridView1.Rows[PosicaoLinha].Cells[2].Value);
             //Close();
+
+            //APAGAR DAQUI PARA BAIXO SE ERRO PERSISTIR
+
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)

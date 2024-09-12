@@ -55,7 +55,7 @@ namespace SysPecNSLib
         }
         public static Nivel ObterPorId(int id)
         {
-            Nivel nivel = new();
+            Nivel nivel = new Nivel();
             // consulta no banco e retornar o Nivel
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
@@ -67,7 +67,7 @@ namespace SysPecNSLib
                 nivel.Nome = dr.GetString(1);
                 nivel.Sigla = dr.GetString(2);
             }
-
+            cmd.Connection.Close();
             return nivel; 
         }
         public static List<Nivel> ObterLista()
@@ -88,7 +88,7 @@ namespace SysPecNSLib
                 );
             }
 
-
+            cmd.Connection.Close();
             return lista;
         }
         public bool Atualizar()
@@ -98,6 +98,7 @@ namespace SysPecNSLib
             cmd.CommandText = $"update niveis" + 
                 $"set nome = '{Nome}', sigla = '{Sigla}' where id = {Id}";
             return cmd.ExecuteNonQuery() > 0 ? true : false;  //If ternário
+            //
             //if (cmd.ExecuteNonQuery()>0)
             //return true;
             //else
