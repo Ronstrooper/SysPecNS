@@ -361,6 +361,7 @@
             Controls.Add(Produtos);
             Name = "FrmProduto";
             Text = "FormProdutos";
+            Load += FrmProduto_Load_1;
             Produtos.ResumeLayout(false);
             Produtos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)npEstoqueMinimo).EndInit();

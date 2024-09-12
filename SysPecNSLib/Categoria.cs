@@ -11,13 +11,14 @@ namespace SysPecNSLib
         public int Id { get; set; } // métodos construtores
         public string? Nome { get; set; }
         public string? Sigla { get; set; }
+
         public Categoria() { } // método vazio que retonar new new();
         public Categoria(string? nome, string? sigla)
         {
             Nome = nome;
             Sigla = sigla;
         }
-        public Categoria(int id, string? nome, string? sigla) // 
+        public Categoria(int id, string? nome, string? sigla=null) // 
 
         {
             Id = id;
@@ -41,7 +42,7 @@ namespace SysPecNSLib
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                categoria = new (dr.GetInt32(0), dr.GetString(1), dr.GetString(2));
+                categoria = new (dr.GetInt32(0), dr.GetString(1),null);
                 
             }
             return categoria; 
@@ -54,7 +55,7 @@ namespace SysPecNSLib
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                categorias.Add(new(dr.GetInt32(0), dr.GetString(1),null));
+                categorias.Add(new(dr.GetInt32(0), dr.GetString(1)));
 
             }
             return categorias;

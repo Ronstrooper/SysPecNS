@@ -114,6 +114,7 @@ namespace SysPecNSDesk
             double desconto = 0;
             double total = 0;
             //double subtotal = 0;
+            double subtotal = 0; // COMENTAR SE NECESSÁRIO
             foreach (var item in itens)
             {
                 dgvItensPedido.Rows.Add();
@@ -127,12 +128,15 @@ namespace SysPecNSDesk
                 linha++;
                 total += item.ValorUnit * item.Quantidade - item.Desconto;
                 desconto += item.Desconto;
+                subtotal *= item.ValorUnit * item.Quantidade; // COMENTAR SE NECESSÁRIO
                 //subtotal *= item.ValorUnit * item.Quantidade;    
             }
             textBox1.Text = total.ToString("#0.00"); // mostra o valor em casa decimal 
+            txtDescontoItens.Text = desconto.ToString("#0.00");
+            textBox2.Text = desconto.ToString("#0.00"); // COMENTAR SE NECESSÁRIO
+            txtSubTotal.Text = subtotal.ToString("#0.00"); // COMENTAR SE DER ERRO
             //textBox2.Text = desconto.ToString("#0.00");
             //txtSubTotal.Text = subtotal.ToString("#0.00");
-            txtDescontoItens.Text = desconto.ToString("#0.00");
         }
 
         private void btnCliente_Click(object sender, EventArgs e)
@@ -142,6 +146,10 @@ namespace SysPecNSDesk
             //txtIdCliente.Text = $"{Program.frmClienteBuscar.Id}";
             //txtCliente.Text = $"{Program.frmClienteBuscar.CPF}";
             //txtNomeCliente.Text = $"{Program.frmClienteBuscar.Nome}";
+
+            FrmClienteBuscar frmClienteBuscar = new(); // recebe valor vazio
+            frmClienteBuscar.ShowDialog();
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

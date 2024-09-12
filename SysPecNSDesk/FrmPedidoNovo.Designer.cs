@@ -97,9 +97,9 @@
             btnCliente.FlatStyle = FlatStyle.Flat;
             btnCliente.Image = (Image)resources.GetObject("btnCliente.Image");
             btnCliente.ImageAlign = ContentAlignment.MiddleRight;
-            btnCliente.Location = new Point(28, 91);
+            btnCliente.Location = new Point(29, 85);
             btnCliente.Name = "btnCliente";
-            btnCliente.Size = new Size(116, 27);
+            btnCliente.Size = new Size(116, 39);
             btnCliente.TabIndex = 4;
             btnCliente.Text = "Cliente";
             btnCliente.UseVisualStyleBackColor = true;
