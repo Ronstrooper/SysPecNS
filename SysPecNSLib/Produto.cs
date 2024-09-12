@@ -20,8 +20,8 @@ namespace SysPecNSLib
         public byte[]? Imagem { get; set; } // matriz de bytes
         public DateTime? DataCad { get; set; }
         public Produto() 
-        { 
-        
+        {
+            Categoria = new();
         } //método construtor vazio
         public Produto(string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria categoria, double estoqueMinino, double classeDesconto) //método construtor que será usado para inserir dados na tebala do banco de dados
         {
