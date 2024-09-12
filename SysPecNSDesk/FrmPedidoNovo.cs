@@ -14,6 +14,7 @@ namespace SysPecNSDesk
     public partial class FrmPedidoNovo : Form
     {
         Produto produto;
+        ItemPedido itempedido;
         public FrmPedidoNovo()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace SysPecNSDesk
             grbItens.Enabled = true; //permite digitar itens 
             grbIdentificacao.Enabled = false;
             txtCodBar.Focus(); //cursor´já vai direto para o código de barras piscando
-            //MessageBox.Show($"Novo pedido criado - {pedido.Id}");
+            //MessageBox.Show($"Novo pedido criado - {pedido.Id}"); não descomentar
 
         }
 
@@ -72,7 +73,7 @@ namespace SysPecNSDesk
                 else
                 {
                     txtDescontoItem.Enabled = true;
-                    label4.Text = $"{produto.ValorUnit * produto.ClasseDesconto}";
+                    label4.Text = $"{produto.ValorUnit * produto.ClasseDesconto}"; //label 4 tá errado e deveria ser substituído por btn?
 
                 }
                 txtValorUnit.Text = produto.ValorUnit.ToString(); //double para string
@@ -101,10 +102,10 @@ namespace SysPecNSDesk
             txtCodBar.Clear();
             txtCodBar.Focus();
 
-            PreencherGirdItens();
+            PreencherGridItens(); // PreencherGirdItens
         }
 
-        private void PreencherGirdItens() // método preenche Grid ^
+        private void PreencherGridItens() // método preenche Grid ^ //PreencherGirdItens
         {
             var itens = ItemPedido.ObterListaPorPedido(int.Parse(txtIdPedido.Text)); // pega o valor do txtIdPedido no FrmPedidoNovo
             dgvItensPedido.Rows.Clear(); // limpa o grid de pedidos
@@ -112,6 +113,7 @@ namespace SysPecNSDesk
             int linha = 0;
             double desconto = 0;
             double total = 0;
+            //double subtotal = 0;
             foreach (var item in itens)
             {
                 dgvItensPedido.Rows.Add();
@@ -125,15 +127,21 @@ namespace SysPecNSDesk
                 linha++;
                 total += item.ValorUnit * item.Quantidade - item.Desconto;
                 desconto += item.Desconto;
+                //subtotal *= item.ValorUnit * item.Quantidade;    
             }
             textBox1.Text = total.ToString("#0.00"); // mostra o valor em casa decimal 
+            //textBox2.Text = desconto.ToString("#0.00");
+            //txtSubTotal.Text = subtotal.ToString("#0.00");
             txtDescontoItens.Text = desconto.ToString("#0.00");
         }
 
         private void btnCliente_Click(object sender, EventArgs e)
         {
-            FrmClienteBuscar frmClienteBuscar = new();
-            frmClienteBuscar.ShowDialog();
+            //FrmClienteBuscar frmClienteBuscar = new(); vai dar erro daqui para baixo ao descomentar
+            //frmClienteBuscar.ShowDialog();
+            //txtIdCliente.Text = $"{Program.frmClienteBuscar.Id}";
+            //txtCliente.Text = $"{Program.frmClienteBuscar.CPF}";
+            //txtNomeCliente.Text = $"{Program.frmClienteBuscar.Nome}";
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -154,6 +162,23 @@ namespace SysPecNSDesk
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvItensPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtQuantidade_TextChanged(object sender, EventArgs e)
+        {
+            //itempedido = ItemPedido.ObterPorId(txtQuantidade.Text); //vai dar erro ao descomentar
+            //label4.Text = $"{produto.ValorUnit * itempedido.Quantidade * produto.ClasseDesconto}";
+
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

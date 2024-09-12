@@ -52,5 +52,19 @@ namespace SysPecNSDesk
                 cont++;
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //int PosicaoLinha = dataGridView1.CurrentRow.Index;
+            //Program.frmClienteBuscar.Id = Convert.ToInt32(dataGridView1.Rows[PosicaoLinha].Cells[0].Value);
+            //Program.frmClienteBuscar.Nome = Convert.ToString(dataGridView1.Rows[PosicaoLinha].Cells[1].Value);
+            //Program.frmClienteBuscar.CPF = Convert.ToString(dataGridView1.Rows[PosicaoLinha].Cells[2].Value);
+            //Close();
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

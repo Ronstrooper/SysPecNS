@@ -271,6 +271,7 @@
             txtQuantidade.Size = new Size(70, 23);
             txtQuantidade.TabIndex = 3;
             txtQuantidade.Text = "1";
+            txtQuantidade.TextChanged += txtQuantidade_TextChanged;
             // 
             // txtValorUnit
             // 
@@ -317,6 +318,7 @@
             dgvItensPedido.RowHeadersVisible = false;
             dgvItensPedido.Size = new Size(608, 193);
             dgvItensPedido.TabIndex = 0;
+            dgvItensPedido.CellContentClick += dgvItensPedido_CellContentClick;
             // 
             // clnSrq
             // 
@@ -430,6 +432,7 @@
             btnFechar.TabIndex = 2;
             btnFechar.Text = "&Fechar";
             btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.Click += btnFechar_Click;
             // 
             // txtSubTotal
             // 

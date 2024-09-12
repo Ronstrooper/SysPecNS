@@ -77,5 +77,25 @@ namespace SysPecNSLib
             cmd.ExecuteNonQuery();
         }
 
+        //public static List<ItemPedido> ObterPorId(int id)
+        //{
+        //    List<ItemPedido> Itens = new();
+        //    var cmd = Banco.Abrir();
+        //    cmd.CommandText = $"select * from itempedido where pedido_id = {id}";
+        //    var dr = cmd.ExecuteReader();
+        //    while (dr.Read())
+        //    {
+        //        Itens.Add(new(
+        //            dr.GetInt32(0),
+        //            dr.GetInt32(1),
+        //            Produto.ObterPorId(dr.GetInt32(2)),
+        //            dr.GetDouble(3),
+        //            dr.GetDouble(4),
+        //            dr.GetDouble(5)
+        //            ));
+        //    }
+        //    return Itens;
+        //}
+
     }
 }
