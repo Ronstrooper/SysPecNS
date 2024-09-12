@@ -224,7 +224,7 @@ namespace SysPecNSDesk
                 txtId.Text = endereco.Id.ToString();
                 txtidCliente_Endereco.Text = endereco.Cliente_id.ToString();
                 MessageBox.Show($"O Endereco {endereco.Cliente_id}, " +
-                    $"foi inserido com sucesso , com o ID {endereco.Id}");
+                    $" foi inserido com sucesso , com o ID {endereco.Id}");
                 txtId_Endereco.Clear();
                 txtidCliente_Endereco.Clear();
                 txtLogradou_Endereco.Clear();

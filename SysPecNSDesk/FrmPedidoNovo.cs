@@ -113,7 +113,6 @@ namespace SysPecNSDesk
             int linha = 0;
             double desconto = 0;
             double total = 0;
-            //double subtotal = 0;
             double subtotal = 0; // COMENTAR SE NECESSÁRIO
             foreach (var item in itens)
             {
@@ -176,7 +175,7 @@ namespace SysPecNSDesk
         private void txtQuantidade_TextChanged(object sender, EventArgs e)
         {
             //itempedido = ItemPedido.ObterPorId(txtQuantidade.Text); //vai dar erro ao descomentar
-            //label4.Text = $"{produto.ValorUnit * itempedido.Quantidade * produto.ClasseDesconto}";
+           
 
         }
 
