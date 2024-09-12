@@ -177,7 +177,7 @@ namespace SysPecNSLib
             //cmd.Parameters.AddWithValue("spdata_cad", Data_cad);
             //cmd.Parameters.AddWithValue("spativo", Ativo);
             //cmd.ExecuteNonQuery();
-            //cmd.Connection.Close();
+            cmd.Connection.Close();
         }
         public static void Arquivar(int id)
         {
