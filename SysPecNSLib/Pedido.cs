@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,11 +13,16 @@ namespace SysPecNSLib
         public Usuario Usuario {get; set;}
         public Cliente Cliente { get; set; }
         public DateTime Data { get; set; }
-        public string Status { get; set; } //string é método primitivo 
+        public string? Status { get; set; } //string é método primitivo 
         public double Desconto { get; set; }
         public List<ItemPedido> Items { get; set; } 
         public Pedido() { }
-        public Pedido(Usuario usuario, Cliente cliente, DateTime data, string status, double desconto)
+        public Pedido(int id, string? status) // Método construtor do altera Status do Pedido no FrmPedido
+        { 
+            Id = id;
+            Status = status;
+        }
+        public Pedido(Usuario usuario, Cliente cliente, DateTime data, string? status, double desconto)
         {
             Usuario = usuario;
             Cliente = cliente;
@@ -30,7 +36,7 @@ namespace SysPecNSLib
             Cliente = cliente;
             Desconto = desconto;
         }
-        public Pedido(int id, Usuario usuario, Cliente cliente, DateTime data, string status, double desconto)
+        public Pedido(int id, Usuario usuario, Cliente cliente, DateTime data, string? status, double desconto)
         {
             Id = id;
             Usuario = usuario;
@@ -39,7 +45,7 @@ namespace SysPecNSLib
             Status = status;
             Desconto = desconto;
         }
-        public Pedido(int id, Usuario usuario, Cliente cliente, DateTime data, string status, double desconto, List<ItemPedido> itens)
+        public Pedido(int id, Usuario usuario, Cliente cliente, DateTime data, string? status, double desconto, List<ItemPedido> itens)
         {
             Id = id;
             Usuario = usuario;
@@ -57,13 +63,28 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spcliente_id",Cliente.Id);
             cmd.Parameters.AddWithValue("spusuario_id", Usuario.Id);
             Id = Convert.ToInt32(cmd.ExecuteScalar()); // dando erro
+            cmd.Connection.Close();
         }
+        //public void Alterar() // Alterar Status do Pedido
+        //{
+        //    var cmd = Banco.Abrir();
+        //    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+        //    cmd.CommandText = "sp_pedido_update";
+        //    cmd.Parameters.AddWithValue("spid", Id);
+        //    cmd.Parameters.AddWithValue("spcliente_id", Cliente.Id);
+        //    cmd.Parameters.AddWithValue("spusuario_id", Usuario.Id);
+        //    cmd.Parameters.AddWithValue("spstatus", Status);
+        //    cmd.Parameters.AddWithValue("spdesconto", Desconto);
+        //    cmd.ExecuteNonQuery();
+        //    cmd.Connection.Close();
+        //}
         public void AlterarStatus() //somente alteração do status e desconto
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = $"update pedidos set status = {Status} where id = {Id}";
             cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
 
         }
         public void AtualizarDesconto() //alterar valor desconto dever ser chamado somente pelo objeto em questão
@@ -72,6 +93,7 @@ namespace SysPecNSLib
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = $"update pedidos set desconto = {Desconto} where id = {Id}"; // Status e Desconto são propriedades da própria classe
             cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
         public static Pedido ObterPorId(int id) //se só colocar o número do pedido, terá que trazer a coleção de dados que esse pedido deve ter
         {
@@ -95,7 +117,7 @@ namespace SysPecNSLib
                      ,ItemPedido.ObterListaPorPedido(dr.GetInt32(0)) //Id do Pedido // busca uma coleção de itens associado a ele, na classe ItemPedido.
                     );
             }
-
+            cmd.Connection.Close();
             return pedido;
         }
         public static List<Pedido> ObterLista() // 
@@ -114,10 +136,11 @@ namespace SysPecNSLib
                     Cliente.ObterPorId(dr.GetInt32(2)),
                     dr.GetDateTime(3), //pega hora e data do banco de dados
                     dr.GetString(4), // retorna status do pedido
-                    dr.GetDouble(5) // pega o valor do desconto no banco de dados
+                    dr.GetDouble(5), // pega o valor do desconto no banco de dados
+                        ItemPedido.ObterListaPorPedido(dr.GetInt32(0)) // busca o pedido na classse ItemPedido
                     ));
             }
-
+            cmd.Connection.Close();
             return pedidos;
         }
         public static List<Pedido> ObterListaPorCliente(int id) // este método puxa o cliente por id, retornando lista de pedido do cliente informado, caso haja pedido
@@ -136,11 +159,12 @@ namespace SysPecNSLib
                     Cliente.ObterPorId(dr.GetInt32(2)),
                     dr.GetDateTime(3), 
                     dr.GetString(4), 
-                    dr.GetDouble(5)
+                    dr.GetDouble(5),
+                     ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
                     ));
             }
 
-
+            cmd.Connection.Close();
             return pedidos;
         }
         public static List<Pedido> ObterListaPorUsuario(int id) // 
@@ -162,7 +186,7 @@ namespace SysPecNSLib
                     dr.GetDouble(5) 
                     ));
             }
-
+            cmd.Connection.Close();
             return pedidos;
         }
     }

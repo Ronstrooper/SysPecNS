@@ -29,9 +29,9 @@ namespace SysPecNSDesk
         {
             Cliente cliente = new(
                 txtNome.Text,
-                txtEmail.Text,
                 txtCPF.Text,
                 txtTelefone.Text,
+                txtEmail.Text, // corrigido
                 dtmDataNasc.Value
                 );
 
@@ -137,46 +137,46 @@ namespace SysPecNSDesk
 
         }
 
-        private void brnInserir_Endereco_Click(object sender, EventArgs e)
-        {
-            Endereco endereco = new(
-                Cliente.ObterPorId(Convert.ToInt32(txtidCliente_Endereco.Text)),
-                txtCEP_Endereco.Text,
-                txtLogradou_Endereco.Text,
-                txtNumero_Endereco.Text,
-                txtComplemento_Endereco.Text,
-                txtBairro_Endereco.Text,
-                txtCidade_Endereco.Text,
-                txtUF_Endereco.Text,
-                txtTipo_Endereco.Text
-                );
+        //private void brnInserir_Endereco_Click(object sender, EventArgs e) // BrnInserir não está inserindo dados na tabela endereços
+        //{
+        //    Endereco endereco = new(
+        //        Cliente.ObterPorId(Convert.ToInt32(txtidCliente_Endereco.Text)),
+        //        txtCEP_Endereco.Text,
+        //        txtLogradou_Endereco.Text,
+        //        txtNumero_Endereco.Text,
+        //        txtComplemento_Endereco.Text,
+        //        txtBairro_Endereco.Text,
+        //        txtCidade_Endereco.Text,
+        //        txtUF_Endereco.Text,
+        //        txtTipo_Endereco.Text
+        //        );
 
 
-            endereco.Inserir();
-            if (endereco.Id > 0)
-            {
-                txtId.Text = endereco.Id.ToString();
-                txtidCliente_Endereco.Text = endereco.Cliente_id.ToString();
-                MessageBox.Show($"O Endereco {endereco.Cliente_id}, " +
-                    $"foi inserido com sucesso , com o ID {endereco.Id}");
-                txtId_Endereco.Clear();
-                txtidCliente_Endereco.Clear();
-                txtLogradou_Endereco.Clear();
-                txtNumero_Endereco.Clear();
-                txtComplemento_Endereco.Clear();
-                txtBairro_Endereco.Clear();
-                txtCidade_Endereco.Clear();
-                txtUF_Endereco.Clear();
-                txtTipo_Endereco.Clear();
-                txtNome.Focus();
+        //    endereco.Inserir();
+        //    if (endereco.Id > 0)
+        //    {
+        //        txtId.Text = endereco.Id.ToString();
+        //        txtidCliente_Endereco.Text = endereco.Cliente_id.ToString();
+        //        MessageBox.Show($"O Endereco {endereco.Cliente_id}, " +
+        //            $"foi inserido com sucesso , com o ID {endereco.Id}");
+        //        txtId_Endereco.Clear();
+        //        txtidCliente_Endereco.Clear();
+        //        txtLogradou_Endereco.Clear();
+        //        txtNumero_Endereco.Clear();
+        //        txtComplemento_Endereco.Clear();
+        //        txtBairro_Endereco.Clear();
+        //        txtCidade_Endereco.Clear();
+        //        txtUF_Endereco.Clear();
+        //        txtTipo_Endereco.Clear();
+        //        txtNome.Focus();
 
-                FrmClientes_Load(sender, e);
-            }
-            else
-            {
-                MessageBox.Show("Falha ao gravar");
-            }
-        }
+        //        FrmClientes_Load(sender, e);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Falha ao gravar");
+        //    }
+        //}
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -203,7 +203,7 @@ namespace SysPecNSDesk
 
         }
 
-        private void brnInserir_Endereco_Click_1(object sender, EventArgs e) // Não funciona
+        private void brnInserir_Endereco_Click_1(object sender, EventArgs e) // Não funciona // btn inserir endereço
         {
             Endereco endereco = new(
                Cliente.ObterPorId(Convert.ToInt32(txtidCliente_Endereco.Text)),
@@ -240,7 +240,7 @@ namespace SysPecNSDesk
             }
             else
             {
-                MessageBox.Show("Falha ao gravar");
+                MessageBox.Show("Erro ao gravar");
             }
         }
     }
