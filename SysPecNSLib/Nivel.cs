@@ -51,6 +51,7 @@ namespace SysPecNSLib
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = $"insert niveis (nome, sigla) values('{Nome}','{Sigla}')"; // id não é necessário por ser auto_increment no banco de dados
             cmd.ExecuteNonQuery();  // equivalente ao Enter dado no prompt do MySql no Xampp
+            cmd.Connection.Close();
 
         }
         public static Nivel ObterPorId(int id)
@@ -95,9 +96,13 @@ namespace SysPecNSLib
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"update niveis" + 
+            cmd.CommandText = $"update niveis" +
                 $"set nome = '{Nome}', sigla = '{Sigla}' where id = {Id}";
             return cmd.ExecuteNonQuery() > 0 ? true : false;  //If ternário
+            //return retorna valor com verificação booleana
+            // "?" simula "se" lendo o comando executado como true
+            // ":" (dois pontos) retorna falso
+
             //
             //if (cmd.ExecuteNonQuery()>0)
             //return true;
@@ -111,6 +116,7 @@ namespace SysPecNSLib
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"delete from niveis where id = {Id}";
             cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
 
         }
     }

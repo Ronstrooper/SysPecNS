@@ -1,4 +1,5 @@
 ﻿using Org.BouncyCastle.Utilities;
+using SysPecNSLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,6 +83,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spestoque_minino", EstoqueMinino);
             cmd.Parameters.AddWithValue("spclasse_desconto",ClasseDesconto);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Connection.Close();
         }
         public void Atualizar()
         {
@@ -97,6 +99,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spestoque_minino", EstoqueMinino);
             cmd.Parameters.AddWithValue("spclasse_desconto", ClasseDesconto);
             cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
         public static Produto ObterPorId(int id)
         {
@@ -119,7 +122,7 @@ namespace SysPecNSLib
                     dr.GetDateTime(9) //Datetime no método construtor
                     );
             }
-
+            cmd.Connection.Close();
             return produto; //métrodo construtor entrega um objeto do valor produto
         }
         public static Produto ObterPorId(String id) // CONFERIR COD AQUI
@@ -143,10 +146,11 @@ namespace SysPecNSLib
                     dr.GetDateTime(9) //Datetime no método construtor
                     );
             }
+            cmd.Connection.Close();
             return produto;
         }
             public static List<Produto> ObterLista()
-        {
+            {
             List <Produto> produtos = new();
             var cmd = Banco.Abrir();
             cmd.CommandText = "select * from produtos order by descricao";
@@ -181,3 +185,42 @@ namespace SysPecNSLib
 //spcategoria_id 
 //spestoque_minimo 
 //spclasse_desconto
+
+//public static List<Produto> ObterLista(string nome = "")
+//{
+//    List<Produto> produtos = new();//Objeto da Classe Lista de Produto em lista recebe um metodo construtor vazio
+//    var cmd = Banco.Abrir();
+//    cmd.CommandType = System.Data.CommandType.Text;
+//    //cmd.CommandText = "select * from produtos order by descricao";
+//    if (nome == "")
+//    {
+//        cmd.CommandText = "select * from produtos " +
+//            "order by descricao limit 10;";
+//    }
+//    else
+//    {
+//        cmd.CommandText = $"select * from produtos" +
+//            $"where descricao like '%{nome}% order by descricao limit 10';";
+//    }
+//    var dr = cmd.ExecuteReader();
+//    while (dr.Read())
+//    {
+//        produtos.Add(new(
+//            dr.GetInt32(0),
+//            dr.GetString(1),
+//            dr.GetString(2),
+//            dr.GetDouble(3),
+//            dr.GetString(4),
+//            Categoria.ObterPorId(
+//                dr.GetInt32(5)
+//                ),
+//            dr.GetDouble(6),
+//            dr.GetDouble(7),
+//            null,
+//            dr.GetDateTime(9)
+
+//            ));
+//    }
+//    cmd.Connection.Close();
+//    return produtos;
+//}

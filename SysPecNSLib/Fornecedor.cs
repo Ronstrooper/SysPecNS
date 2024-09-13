@@ -49,6 +49,7 @@ namespace SysPecNSLib
             var cmd = Banco.Abrir();
             cmd.CommandText = $"insert into fornecedores values (0,'{RazaoSocial}', '{Fantasia}', '{CNPJ}', '{Contato}', '{Telefone}', '{Email}')";
             cmd.ExecuteNonQuery(); // usado por conta do insert no banco de dados
+            cmd.Connection.Close();
         }
 
         public static Fornecedor ObterPorId(int id)
@@ -116,6 +117,7 @@ namespace SysPecNSLib
             var cmd = Banco.Abrir();
             cmd.CommandText = $"update produtofornecedor" +
                 $"set produto_id = '{ProdutoId.Id}', fornecedores_id = '{Id}' where id = '{Id}'";
+            cmd.Connection.Close();
         }
 
         public static Fornecedor ObterPorIdFornecedor(int id) // obtém fornecedor por id MEIO ÓBVIO RODRIGO

@@ -17,17 +17,17 @@ namespace SysPecNSLib
         public double Quantidade { get; set; }
         public double Desconto { get; set; }
         public ItemPedido () { }
-        public ItemPedido(int id, int idPedido, Produto produto, double valorUnit, double quantidade, double desconto)
+        public ItemPedido(int idPedido, Produto produto, double valorUnit, double quantidade, double desconto)
         {
-            Id = id;
             IdPedido = idPedido;
             Produto = produto;
             ValorUnit = valorUnit;
             Quantidade = quantidade;
             Desconto = desconto;
         }
-        public ItemPedido(int idPedido, Produto produto, double valorUnit, double quantidade, double desconto)
+        public ItemPedido(int id, int idPedido, Produto produto, double valorUnit, double quantidade, double desconto)
         {
+            Id = id;
             IdPedido = idPedido;
             Produto = produto;
             ValorUnit = valorUnit;
@@ -46,6 +46,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spdesconto",Desconto);
             Id = Convert.ToInt32(cmd.ExecuteScalar()); // por conta do last_insert_id na procedure
             //cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
         public static List<ItemPedido> ObterListaPorPedido(int id)
         {
@@ -64,6 +65,7 @@ namespace SysPecNSLib
                     dr.GetDouble(5)                    
                     ));
             }
+            cmd.Connection.Close();
             return Itens;
         }
         public void Atualizar() // procedure no banco de aados
@@ -75,6 +77,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spquantidade", Quantidade);
             cmd.Parameters.AddWithValue("spdesconto", Desconto);
             cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
 
         //public static List<ItemPedido> ObterPorId(int id)
@@ -94,6 +97,7 @@ namespace SysPecNSLib
         //            dr.GetDouble(5)
         //            ));
         //    }
+            //cmd.Connection.Close():
         //    return Itens;
         //}
 

@@ -89,6 +89,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spcidade", Cidade);
             cmd.Parameters.AddWithValue("spuf", UF);
             cmd.Parameters.AddWithValue("sptipo_endereco", Tipo);
+            cmd.Connection.Close();
         }
         public static Endereco ObterPorId(int id)
         {
