@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SysPecNSDesk
 {
@@ -65,20 +66,20 @@ namespace SysPecNSDesk
             if (txtCodBar.TextLength > 0)
             {
                 produto = Produto.ObterPorId(txtCodBar.Text); //Produto só existe dentro do txtCodBar_Leave
-                txtDescricao.Text = produto.Descricao;
+                txtDescricaoItem.Text = produto.Descricao;
                 if (produto.ClasseDesconto == 0) // não permite desconto caso o produto não tenha a opção disponível no banco de dados
                 {
-                    txtDescontoItem.Enabled = false;
+                    txtDescontoItens.Enabled = false;
                 }
                 else
                 {
-                    txtDescontoItem.Enabled = true;
+                    txtDescontoItens.Enabled = true;
                     label4.Text = $"{produto.ValorUnit * produto.ClasseDesconto}"; //label 4 tá errado e deveria ser substituído por btn?
 
                 }
-                txtValorUnit.Text = produto.ValorUnit.ToString(); //double para string
-                txtValorUnit.ReadOnly = true;
-                txtQuantidade.Focus(); // leva o cursor para a caixa quantidade
+                txtValorUnitItem.Text = produto.ValorUnit.ToString(); //double para string
+                txtValorUnitItem.ReadOnly = true;
+                txtQuantidadeItem.Focus(); // leva o cursor para a caixa quantidade
 
             }
         }
@@ -89,21 +90,23 @@ namespace SysPecNSDesk
                 int.Parse(txtIdPedido.Text),
                 produto,
                 produto.ValorUnit,
-                double.Parse(txtQuantidade.Text),
-                double.Parse(txtDescontoItem.Text)
+                double.Parse(txtQuantidadeItem.Text),
+                double.Parse(txtDescontoItens.Text)
                 );
 
             item.Inserir(); // comando de inserir o objeto // somente o método inserir insere no banco de dados
             produto = new(); // instância vazia da variável produto
-            txtDescontoItem.Text = "0";
-            txtDescricao.Clear();
-            txtValorUnit.Text = "0";
-            txtQuantidade.Text = "1";
+            txtDescontoItens.Text = "0";
+            txtDescricaoItem.Clear();
+            txtValorUnitItem.Text = "0";
+            txtQuantidadeItem.Text = "1";
             txtCodBar.Clear();
             txtCodBar.Focus();
+            txtDescontodoPedido.Enabled = true;
 
             PreencherGridItens(); // PreencherGirdItens
         }
+
 
         private void PreencherGridItens() // método preenche Grid ^ //PreencherGirdItens
         {
@@ -130,9 +133,9 @@ namespace SysPecNSDesk
                 subtotal *= item.ValorUnit * item.Quantidade; // COMENTAR SE NECESSÁRIO
                 //subtotal *= item.ValorUnit * item.Quantidade;    
             }
-            textBox1.Text = total.ToString("#0.00"); // mostra o valor em casa decimal 
-            txtDescontoItens.Text = desconto.ToString("#0.00");
-            textBox2.Text = desconto.ToString("#0.00"); // COMENTAR SE NECESSÁRIO
+            txtTotal.Text = total.ToString("#0.00"); // mostra o valor em casa decimal 
+            textBox2.Text = desconto.ToString("#0.00");
+            // textBox4.Text = desconto.ToString("#0.00"); // COMENTAR SE NECESSÁRIO
             txtSubTotal.Text = subtotal.ToString("#0.00"); // COMENTAR SE DER ERRO
             //textBox2.Text = desconto.ToString("#0.00");
             //txtSubTotal.Text = subtotal.ToString("#0.00");
@@ -140,7 +143,7 @@ namespace SysPecNSDesk
 
         private void btnCliente_Click(object sender, EventArgs e)
         {
-            
+
 
             FrmClienteBuscar frmClienteBuscar = new(); // recebe valor vazio
             frmClienteBuscar.ShowDialog();
@@ -175,13 +178,39 @@ namespace SysPecNSDesk
         private void txtQuantidade_TextChanged(object sender, EventArgs e)
         {
             //itempedido = ItemPedido.ObterPorId(txtQuantidade.Text); //vai dar erro ao descomentar
-           
+
 
         }
 
-        private void btnFechar_Click(object sender, EventArgs e)
+        private void btnFechar_Click(object sender, EventArgs e) // botão fechar pedido
         {
-            
+            //double total = double.Parse(txtSubTotal.Text) - double.Parse(textBox2.Text) - double.Parse(txtDescontodoPedido.Text);
+            //textBox4.Text = total.ToString("#0.00");
+            //if (double.Parse(txtTotal.Text) > double.Parse(txtDescontodoPedido.Text) || (double.Parse(txtTotal.Text) == double.Parse(txtDescontodoPedido.Text)))
+            //{
+            //    if (txtTotal.Text == textBox4.Text)
+            //    {
+            //        Pedido pedido = new(
+            //            int.Parse(txtIdPedido.Text),
+            //            "F"
+            //        );
+
+            //        pedido.AlterarStatus();
+
+            //        Close();
+            //    }
+            //    else
+            //    {
+            //        txtTotal.Text = textBox4.Text;
+
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("O valor do desconto é maior que o preço do pedido");
+            //    txtDescontodoPedido.Text = Convert.ToString(0);
+            //}
         }
+
     }
 }
