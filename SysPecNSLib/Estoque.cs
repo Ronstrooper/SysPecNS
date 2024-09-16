@@ -16,6 +16,10 @@ namespace SysPecNSLib
         { 
             //método construto vazio        
         }
+        public Estoque (int quantidade)
+        {
+            Quantidade = quantidade;
+        }
         public Estoque(Produto produto, double? quantidade)
         {
             Produto = produto;
@@ -56,7 +60,8 @@ namespace SysPecNSLib
             Estoque estoque = new Estoque();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from estoques where produto_id = {idProduto}";
+            cmd.CommandText = $"select * from estoques";
+            //cmd.CommandText = $"select * from estoques where produto_id = {idProduto}";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
