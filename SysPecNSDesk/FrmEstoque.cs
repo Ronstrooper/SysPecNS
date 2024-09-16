@@ -16,5 +16,10 @@ namespace SysPecNSDesk
         {
             InitializeComponent();
         }
+
+        private void FrmEstoque_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
