@@ -20,13 +20,13 @@ namespace SysPecNSLib
         public static MySqlCommand Abrir()
         {
             // dados da conexão   
-            string strconn = @"server=10.91.45.20;database=syspecdb;user=root;password=root"; //variável para conectar ao banco de dados
+            string strconn = @"server=10.91.46.26;database=syspecdb;user=root;password=root"; //variável para conectar ao banco de dados
             MySqlConnection cn = new MySqlConnection(strconn); //valor da viariável para acessar o banco de dados
             MySqlCommand cmd = new();
             try //tratamento de excessão
             {
                 cn.Open(); // cn objeto do tipo mysqlconnection //azul bebê sempre representa objeto, verde turquesa sempre representa classe.
-                cmd.Connection = cn;
+                cmd.Connection = cn; 
             }
             catch (Exception)
             {

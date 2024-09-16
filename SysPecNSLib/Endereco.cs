@@ -54,7 +54,7 @@ namespace SysPecNSLib
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_endereco_insert";
-            cmd.Parameters.AddWithValue("spid", Id);
+            //cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spcliente_id", Cliente_id.Id);
             cmd.Parameters.AddWithValue("spcep", Cep);
             cmd.Parameters.AddWithValue("splogradouro", Logradouro);
@@ -78,8 +78,8 @@ namespace SysPecNSLib
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_endereco_insert";
-            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.CommandText = "sp_endereco_update";
+            //cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spcliente_id", Cliente_id.Id);
             cmd.Parameters.AddWithValue("spcep", Cep);
             cmd.Parameters.AddWithValue("splogradouro", Logradouro);
@@ -125,11 +125,13 @@ namespace SysPecNSLib
             cmd.CommandType = CommandType.Text;
             if (nome == "")
             {
-                cmd.CommandText = "select * from enderecos order by logradouro limit 10;";
+                cmd.CommandText = "select * from enderecos order by logradouro limit 20;";
+                //cmd.CommandText = "select * from enderecos order by logradouro limit 10;"; // seleciona os clientes limitando a 10
             }
             else
             {
-                cmd.CommandText = $"select * from enderecos where cliente_id = {Cliente_id.Id} and logradouro like '%{nome}% order by logradouro limit 10'";
+                cmd.CommandText = $"select * from enderecos where cliente_id = {Cliente_id.Id} and logradouro like '%{nome} order by logradouro limit 20'";
+                //cmd.CommandText = $"select * from enderecos where cliente_id = {Cliente_id.Id} and logradouro like '%{nome}% order by logradouro limit 10'";
             }
 
             var dr = cmd.ExecuteReader();
@@ -161,11 +163,13 @@ namespace SysPecNSLib
             cmd.CommandType = CommandType.Text;
             if (nome == "")
             {
-                cmd.CommandText = "select * from enderecos order by logradouro limit 10;";
+                cmd.CommandText = "select * from enderecos order by logradouro limit 20;";
+                //cmd.CommandText = "select * from enderecos order by logradouro limit 10;";
             }
             else
             {
-                cmd.CommandText = $"select * from enderecos where cliente_id = {Cliente_id.Id} and logradouro like '%{nome}% order by logradouro limit 10'";
+                cmd.CommandText = $"select * from enderecos where cliente_id = {Cliente_id.Id} and logradouro like '%{nome}% order by logradouro limit 20'";
+                //cmd.CommandText = $"select * from enderecos where cliente_id = {Cliente_id.Id} and logradouro like '%{nome}% order by logradouro limit 10'";
 
             }
 

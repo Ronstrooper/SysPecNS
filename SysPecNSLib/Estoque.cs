@@ -35,7 +35,7 @@ namespace SysPecNSLib
             {
                 cmd.CommandText = $"insert estoques (produto_id, quantidade) values({Produto}, {Quantidade}))";
             }
-            //cmd.CommandText = $"insert estoques (produto_id, quantidade) values ({Produto}, {Quantidade}))";
+            //cmd.CommandText = $"insert estoques (produto_id, quantidade) values({Produto}, {Quantidade}))";
             else
             {
                //

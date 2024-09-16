@@ -111,6 +111,7 @@ namespace SysPecNSLib
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"select * from clientes where id = {id};";
+            //cmd.CommandText = $"select * from clientes where id = {id};";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
@@ -137,12 +138,15 @@ namespace SysPecNSLib
             //cmd.CommandText = $"select * from clientes order by nome";
             if (nome == "")
             {
-                cmd.CommandText = "select * from clientes order by nome limit 10;";
+                cmd.CommandText = "select * from clientes order by nome;"; // seleciona todos os clientes ao invés de 10
+                //cmd.CommandText = "select * from clientes order by nome limit 10;";
             }
             else
             {
                 cmd.CommandText = $"select from clientes" +
-                    $"where nome like '%{nome}% order by nome limit 10';";
+                    $"where nome like '%{nome}% order by nome;'";
+                //cmd.CommandText = $"select from clientes" +
+                    //$"where nome like '%{nome}% order by nome limit 10';";
             }
 
             var dr = cmd.ExecuteReader();
@@ -183,7 +187,7 @@ namespace SysPecNSLib
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"update clientes set ativo = 0 where id = {id}";
+            cmd.CommandText = $"update clientes set Ativo = 0 where id = {id}";
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
@@ -191,7 +195,7 @@ namespace SysPecNSLib
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"update clientes set ativo = 1 where id = {id}";
+            cmd.CommandText = $"update clientes set Ativo = 1 where id = {id}";
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
